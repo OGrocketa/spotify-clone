@@ -8,12 +8,12 @@
       {
         "title": "Stan",
         "duration": "6:44",
-        "filePath": "../artists/eminem/albums/marshall_mathers_lp/songs/stan.mp3"
+        "filePath": "../artists/eminem/albums/marshall_mathers_lp/songs/Eminem - Stan (Short Version) ft. Dido.mp3"
       },
       {
         "title": "The Way I Am",
         "duration": "4:50",
-        "filePath": "../artists/eminem/albums/marshall_mathers_lp/songs/the_way_i_am.mp3"
+        "filePath": "../artists/eminem/albums/marshall_mathers_lp/songs/Eminem - The Way I Am.mp3"
       }
     ],
     "cover": "../artists/eminem/albums/marshall_mathers_lp/cover.jpg"
@@ -27,12 +27,12 @@
         {
           "title": "Godzilla",
           "duration": "3:30",
-          "filePath": "../artists/eminem/albums/music_to_be_murdered_by/songs/godzilla.mp3"
+          "filePath": "../artists/eminem/albums/music_to_be_murdered_by/songs/Godzilla (feat. Juice WRLD) [Official Audio].mp3"
         },
         {
           "title": "Darkness",
           "duration": "5:38",
-          "filePath": "../artists/eminem/albums/music_to_be_murdered_by/songs/darkness.mp3"
+          "filePath": "../artists/eminem/albums/music_to_be_murdered_by/songs/Darkness [Official Audio].mp3"
         }
       ],
       "cover": "../artists/eminem/albums/music_to_be_murdered_by/cover.jpg"
@@ -46,12 +46,12 @@
         {
           "title": "Lucid Dreams",
           "duration": "3:59",
-          "filePath": "../artists/juicy_wrld/albums/goodbye_&_good_riddance/songs/lucid_dreams.mp3"
+          "filePath": "../artists/juicy_wrld/albums/goodbye_&_good_riddance/songs/Juice WRLD - Lucid Dreams (Official Music Video).mp3"
         },
         {
           "title": "All Girls Are the Same",
           "duration": "2:46",
-          "filePath": "../artists/juicy_wrld/albums/goodbye_&_good_riddance/songs/all_girls_are_the_same.mp3"
+          "filePath": "../artists/juicy_wrld/albums/goodbye_&_good_riddance/songs/Juice WRLD - All Girls Are The Same (Official Music Video).mp3"
         }
       ],
       "cover": "../artists/juicy_wrld/albums/goodbye_&_good_riddance/cover.jpg"
@@ -65,12 +65,12 @@
         {
           "title": "Wishing Well",
           "duration": "3:14",
-          "filePath": "../artists/juicy_wrld/albums/legends_never_die/songs/wishing_well.mp3"
+          "filePath": "../artists/juicy_wrld/albums/legends_never_die/songs/Juice WRLD - Wishing Well (Official Audio).mp3"
         },
         {
           "title": "Come & Go",
           "duration": "3:25",
-          "filePath": "../artists/juicy_wrld/albums/legends_never_die/songs/come_&_go.mp3"
+          "filePath": "../artists/juicy_wrld/albums/legends_never_die/songs/Juice WRLD ft. Marshmello - Come & Go (Official Audio).mp3"
         }
       ],
       "cover": "../artists/juicy_wrld/albums/legends_never_die/cover.jpg"
@@ -84,12 +84,12 @@
         {
           "title": "Self Care",
           "duration": "5:45",
-          "filePath": "../artists/mac_miller/albums/swimming/songs/self_care.mp3"
+          "filePath": "../artists/mac_miller/albums/swimming/songs/Mac Miller - Self Care.mp3"
         },
         {
           "title": "Hurt Feelings",
           "duration": "4:06",
-          "filePath": "../artists/mac_miller/albums/swimming/songs/hurt_feelings.mp3"
+          "filePath": "../artists/mac_miller/albums/swimming/songs/Mac Miller - Hurt Feelings .mp3"
         }
       ],
       "cover": "../artists/mac_miller/albums/swimming/cover.jpg"
@@ -103,12 +103,12 @@
         {
           "title": "Good News",
           "duration": "5:42",
-          "filePath": "../artists/mac_miller/albums/circles/songs/good_news.mp3"
+          "filePath": "../artists/mac_miller/albums/circles/songs/Mac Miller - Good News.mp3"
         },
         {
           "title": "Blue World",
           "duration": "3:29",
-          "filePath": "../artists/mac_miller/albums/circles/songs/blue_world.mp3"
+          "filePath": "../artists/mac_miller/albums/circles/songs/Mac Miller - Blue World.mp3"
         }
       ],
       "cover": "../artists/mac_miller/albums/swimming/cover.jpg"
