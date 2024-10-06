@@ -16,7 +16,7 @@
         "filePath": "../artists/eminem/albums/marshall_mathers_lp/songs/Eminem - The Way I Am.mp3"
       }
     ],
-    "cover": "../artists/eminem/albums/marshall_mathers_lp/cover.jpg"
+    "cover": "/public/artists/eminem/albums/marshall_mathers_lp/cover.jpg"
   },
     {
       "id": 2,
@@ -27,7 +27,7 @@
         {
           "title": "Godzilla",
           "duration": "3:30",
-          "filePath": "../artists/eminem/albums/music_to_be_murdered_by/songs/Godzilla (feat. Juice WRLD) [Official Audio].mp3"
+          "filePath": "/public/artists/eminem/albums/music_to_be_murdered_by/songs/Godzilla (feat. Juice WRLD) [Official Audio].mp3"
         },
         {
           "title": "Darkness",

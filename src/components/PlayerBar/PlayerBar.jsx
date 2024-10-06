@@ -4,10 +4,17 @@ import "./PlayerBar.css"
 function PlayerBar(){
 
     const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(10);
 
     const togglePlayPause = () => {
         setIsPlaying(!isPlaying);
     }
+
+
+    const handleProgressChange = (event) => {
+        setProgress(event.target.value); 
+    };
+
 
     return(
         <>
@@ -29,7 +36,13 @@ function PlayerBar(){
 
                     <div className="song-progress">
                         <p>0:15</p>
-                        <input className= "playback-progress-bar" type="range" min={0} max={100} value={10}/>
+                        <input className= "playback-progress-bar"
+                            type="range"
+                            min={0}
+                            max={100}
+                            value={10}
+                            onChange={handleProgressChange}
+                        />
                         <p>2:25</p>
                     </div>
                 </div>

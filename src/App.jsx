@@ -6,7 +6,6 @@ import HomePage from './pages/HomePage/HomePage'
 import Sidebar from './components/SideBar/SideBar'
 
 
-
 function App() {
 
   return (
