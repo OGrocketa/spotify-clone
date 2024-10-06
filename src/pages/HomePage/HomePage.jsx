@@ -1,5 +1,5 @@
 import React from 'react';
-import { featuredPlaylists } from './mock-data.js'; 
+import { featuredPlaylists } from '../../mock-data';
 import './HomePage.css'; 
 
 const HomePage = () => {
