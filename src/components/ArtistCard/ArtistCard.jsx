@@ -7,7 +7,7 @@ const ArtistCard = ({artistData}) => {
     const type = artistData.type;
 
     return(
-        <Card imagePath={avatar} cardTitle={name} additionalInfo={type} customImageClass="artist-image" />
+        <Card imagePath={avatar} cardTitle={name} additionalInfo={type} />
     );
 }
 
