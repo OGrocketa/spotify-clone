@@ -1,11 +1,11 @@
 import "./AlbumCard.css"
 
 
-const AlbumCard = ({ albumdata }) => {
-    const cover = albumdata.cover;
-    const title = albumdata.title;
-    const type = albumdata.type;
-    const releaseDate = albumdata.releaseDate;
+const AlbumCard = ({ albumData }) => {
+    const cover = albumData.cover;
+    const title = albumData.title;
+    const type = albumData.type;
+    const releaseDate = albumData.releaseDate;
     const releaseYear = new Date(releaseDate).getFullYear();
   
     return (

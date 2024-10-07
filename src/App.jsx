@@ -2,8 +2,19 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 import AlbumCard from './components/AlbumCard/AlbumCard'
+import ArtistCard from './components/ArtistCard/ArtistCard'
+
 
 const chuj = {
+  "id": 1,
+  "name": "Eminem",
+  "bio": "Marshall Bruce Mathers III, known professionally as Eminem.",
+  "albums": [1, 2],
+  "avatar": "public/artists/eminem/eminem.jpg",
+  "type":"Artist"
+};
+
+const chuj2 =     {
   "id": 5,
   "title": "Swimming",
   "artistId": 3,
@@ -23,11 +34,13 @@ const chuj = {
   ],
   "cover": "public/artists/mac miller/albums/swimming/cover.jpg"
 }
+
 function App() {
   return (
     <>
       <Router>
-        <AlbumCard albumdata={chuj} />
+        <ArtistCard artistData={chuj}/>
+        <AlbumCard albumData={chuj2}/>
       </Router>
     </>
   );

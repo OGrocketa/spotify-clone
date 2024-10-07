@@ -4,21 +4,25 @@
       "name": "Eminem",
       "bio": "Marshall Bruce Mathers III, known professionally as Eminem.",
       "albums": [1, 2],
-      "image": "../artists/eminem.jpg"
+      "avatar": "public/artists/eminem/eminem.jpg",
+      "type":"Artist"
     },
     {
       "id": 2,
       "name": "Juice WRLD",
       "bio": "Jarad Anthony Higgins, known professionally as Juice WRLD.",
       "albums": [3, 4],
-      "image": "../artists/juice_wrld.jpg"
+      "image": "public/artists/juice wrld/juice wrld.jpg",
+      "type":"Artist"
+
     },
     {
       "id": 3,
       "name": "Mac Miller",
       "bio": "Malcolm James McCormick, known professionally as Mac Miller.",
       "albums": [5, 6],
-      "image": "../artists/mac_miller.jpg"
+      "avatar": "public/artists/mac miller/mac miller.jpg",
+      "type":"Artist"
     }
   ]
   
