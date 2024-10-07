@@ -10,8 +10,8 @@ const HomePage = () => {
     <>
     <div className="home-page">
       <SongProfilePage songTitle={song} />
-      {/* <h1>Featured Playlists</h1> */}
-      {/* <div className="playlists-container">
+      <h1>Featured Playlists</h1>
+      { <div className="playlists-container">
         {featuredPlaylists.map((playlist) => (
           <div key={playlist.id} className="playlist-card">
             <img src={playlist.image} alt={playlist.name} className="playlist-image" />
@@ -20,7 +20,7 @@ const HomePage = () => {
             </div>
           </div>
         ))}
-      </div> */}
+      </div> }
     </div>
     </>
 

@@ -10,7 +10,7 @@ const SongProfilePage = ({ songTitle }) => {
         fetch(`http://127.0.0.1:8000/song/${songTitle}`)
             .then(res => {
                 if (!res.ok) {
-                    throw new Error('Network response was not ok'); // Check for response errors
+                    throw new Error('Network response was not ok'); 
                 }
                 return res.json();
             })
