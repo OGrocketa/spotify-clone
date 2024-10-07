@@ -9,6 +9,13 @@ const AlbumCard = ({ albumData }) => {
     const additionalInfo = new Date(releaseDate).getFullYear() + " • " + type;
 
   
+
+
+
+
+
+
+    
     return (
       <Card imagePath = {cover} cardTitle={title} additionalInfo={additionalInfo}/>
     );
