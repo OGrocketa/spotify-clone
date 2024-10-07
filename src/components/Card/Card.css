@@ -22,6 +22,11 @@
     object-fit: cover;
 }
 
+.card-container img.round-image {
+    border-radius: 50%;
+}
+
+
 .card-info{
     width: 95%;
 }
