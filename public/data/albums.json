@@ -10,15 +10,15 @@
       {
         "title": "Stan",
         "duration": "6:44",
-        "filePath": "public/artists/eminem/albums/The Marshall Mathers LP/songs/Eminem - Stan (Short Version) ft. Dido.mp3"
+        "filePath": "artists/eminem/albums/The Marshall Mathers LP/songs/Eminem - Stan (Short Version) ft. Dido.mp3"
       },
       {
         "title": "The Way I Am",
         "duration": "4:50",
-        "filePath": "public/artists/eminem/albums/The Marshall Mathers LP/songs/Eminem - The Way I Am.mp3"
+        "filePath": "artists/eminem/albums/The Marshall Mathers LP/songs/Eminem - The Way I Am.mp3"
       }
     ],
-    "cover": "public/artists/eminem/albums/The Marshall Mathers LP/cover.jpg"
+    "cover": "artists/eminem/albums/The Marshall Mathers LP/cover.jpg"
   },
     {
       "id": 2,
@@ -30,15 +30,15 @@
         {
           "title": "Godzilla",
           "duration": "3:30",
-          "filePath": "public/artists/eminem/albums/Music to Be Murdered By/songs/Godzilla (feat. Juice WRLD) [Official Audio].mp3"
+          "filePath": "artists/eminem/albums/Music to Be Murdered By/songs/Godzilla (feat. Juice WRLD) [Official Audio].mp3"
         },
         {
           "title": "Darkness",
           "duration": "5:38",
-          "filePath": "public/artists/eminem/albums/Music to Be Murdered By/songs/Darkness [Official Audio].mp3"
+          "filePath": "artists/eminem/albums/Music to Be Murdered By/songs/Darkness [Official Audio].mp3"
         }
       ],
-      "cover": "/public/artists/eminem/albums/Music to Be Murdered By/cover.jpg"
+      "cover": "artists/eminem/albums/Music to Be Murdered By/cover.jpg"
     },
     {
       "id": 3,
@@ -50,15 +50,15 @@
         {
           "title": "Lucid Dreams",
           "duration": "3:59",
-          "filePath": "public/artists/juice wrld/albums/Goodbye & Good Riddance/songs/Juice WRLD - Lucid Dreams (Official Music Video).mp3"
+          "filePath": "artists/juice wrld/albums/Goodbye & Good Riddance/songs/Juice WRLD - Lucid Dreams (Official Music Video).mp3"
         },
         {
           "title": "All Girls Are the Same",
           "duration": "2:46",
-          "filePath": "public/artists/juice wrld/albums/Goodbye & Good Riddance/songs/Juice WRLD - All Girls Are The Same (Official Music Video).mp3"
+          "filePath": "artists/juice wrld/albums/Goodbye & Good Riddance/songs/Juice WRLD - All Girls Are The Same (Official Music Video).mp3"
         }
       ],
-      "cover": "/public/artists/juice wrld/albums/Goodbye & Good Riddance/cover.jpg"
+      "cover": "artists/juice wrld/albums/Goodbye & Good Riddance/cover.jpg"
     },
     {
       "id": 4,
@@ -70,15 +70,15 @@
         {
           "title": "Wishing Well",
           "duration": "3:14",
-          "filePath": "public/artists/juice wrld/albums/Legends Never Die/songs/Juice WRLD - Wishing Well (Official Audio).mp3"
+          "filePath": "artists/juice wrld/albums/Legends Never Die/songs/Juice WRLD - Wishing Well (Official Audio).mp3"
         },
         {
           "title": "Come & Go",
           "duration": "3:25",
-          "filePath": "public/artists/juice wrld/albums/Legends Never Die/songs/Juice WRLD ft. Marshmello - Come & Go (Official Audio).mp3"
+          "filePath": "artists/juice wrld/albums/Legends Never Die/songs/Juice WRLD ft. Marshmello - Come & Go (Official Audio).mp3"
         }
       ],
-      "cover": "public/artists/juice wrld/albums/Legends Never Die/cover.jpg"
+      "cover": "artists/juice wrld/albums/Legends Never Die/cover.jpg"
     },
     {
       "id": 5,
@@ -90,15 +90,15 @@
         {
           "title": "Self Care",
           "duration": "5:45",
-          "filePath": "public/artists/mac miller/albums/swimming/songs/Mac Miller - Self Care.mp3"
+          "filePath": "artists/mac miller/albums/swimming/songs/Mac Miller - Self Care.mp3"
         },
         {
           "title": "Hurt Feelings",
           "duration": "4:06",
-          "filePath": "public/artists/mac miller/albums/swimming/songs/Mac Miller - Hurt Feelings .mp3"
+          "filePath": "artists/mac miller/albums/swimming/songs/Mac Miller - Hurt Feelings .mp3"
         }
       ],
-      "cover": "public/artists/mac miller/albums/swimming/cover.jpg"
+      "cover": "artists/mac miller/albums/swimming/cover.jpg"
     },
     {
       "id": 6,
@@ -110,15 +110,15 @@
         {
           "title": "Good News",
           "duration": "5:42",
-          "filePath": "public/artists/mac miller/albums/circles/songs/Mac Miller - Good News.mp3"
+          "filePath": "artists/mac miller/albums/circles/songs/Mac Miller - Good News.mp3"
         },
         {
           "title": "Blue World",
           "duration": "3:29",
-          "filePath": "public/artists/mac miller/albums/circles/songs/Mac Miller - Blue World.mp3"
+          "filePath": "artists/mac miller/albums/circles/songs/Mac Miller - Blue World.mp3"
         }
       ],
-      "cover": "public/artists/mac miller/albums/swimming/cover.jpg"
+      "cover": "artists/mac miller/albums/swimming/cover.jpg"
     }
   ]
   
