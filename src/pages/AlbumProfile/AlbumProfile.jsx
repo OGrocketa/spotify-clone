@@ -1,6 +1,6 @@
 import React from 'react';
 import "./AlbumProfile.css"
-
+import SongLine from '../../components/SongLine/SongLine';
 
 
 
@@ -88,8 +88,8 @@ const AlbumProfile = () => {
             
             <div className='songs-list'>
                 <ol>
-                    {album.songs.map((track, index) => ( 
-                        <li key={index}>{track.title} - {track.duration}</li>
+                    {album.songs.map((song, index) => (
+                        <SongLine key={index} songData={song} artistName={album.artistName} />
                     ))}
                 </ol>
             </div>
