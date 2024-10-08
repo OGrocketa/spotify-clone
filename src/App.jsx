@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 import AlbumCard from './components/AlbumCard/AlbumCard'
 import ArtistCard from './components/ArtistCard/ArtistCard'
+import AlbumProfile from './pages/AlbumProfile/AlbumProfile'
 
 
 const chuj = {
@@ -18,8 +19,12 @@ const chuj2 =     {
   "id": 5,
   "title": "Swimming",
   "artistId": 3,
+  "artistName":"Mac Miller",
   "releaseDate": "2018-08-03",
   "type":"album",
+  "tracksCount":"2",
+  "timeLength": "9:51",
+  "label":"© 2018 Warner Records Inc.",
   "songs": [
     {
       "title": "Self Care",
@@ -39,8 +44,9 @@ function App() {
   return (
     <>
       <Router>
-        <ArtistCard artistData={chuj}/>
-        <AlbumCard albumData={chuj2}/>
+        {/* <ArtistCard artistData={chuj}/>
+        <AlbumCard albumData={chuj2}/> */}
+        <AlbumProfile/>
       </Router>
     </>
   );

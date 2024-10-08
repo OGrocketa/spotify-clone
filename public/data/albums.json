@@ -24,6 +24,7 @@
       "id": 2,
       "title": "Music to Be Murdered By",
       "artistId": 1,
+      "artistName":"eminem",
       "releaseDate": "2020-01-17",
       "type":"album",
       "songs": [
@@ -44,6 +45,7 @@
       "id": 3,
       "title": "Goodbye & Good Riddance",
       "artistId": 2,
+      "artistName":"juice wrld",
       "releaseDate": "2018-05-23",
       "type":"album",
       "songs": [
@@ -64,6 +66,7 @@
       "id": 4,
       "title": "Legends Never Die",
       "artistId": 2,
+      "artistName":"juice wrld",
       "releaseDate": "2020-07-10",
       "type":"album",
       "songs": [
@@ -84,6 +87,7 @@
       "id": 5,
       "title": "Swimming",
       "artistId": 3,
+      "artistName": "Mac Miller",
       "releaseDate": "2018-08-03",
       "type":"album",
       "songs": [
@@ -104,6 +108,7 @@
       "id": 6,
       "title": "Circles",
       "artistId": 3,
+      "artistName": "Mac Miller",
       "releaseDate": "2020-01-17",
       "type":"album",
       "songs": [

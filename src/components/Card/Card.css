@@ -46,6 +46,10 @@
     text-overflow: ellipsis;
 }
 
+.cardTitle:hover{
+    text-decoration: underline;
+}
+
 .additionalInfo{
     color:  hsla(0, 0%, 100%, 0.7);
 }
