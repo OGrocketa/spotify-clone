@@ -13,6 +13,7 @@
     max-width: 300px;  
     height: auto;  
     margin: 2em;
+    border-radius: 10px;
 }
 
 .album-presentation {
@@ -22,7 +23,6 @@
     padding: 20px;
     background-color: hsl(0, 11%, 12%);
     border-radius: 10px;
-
 }
 
 .album-presentation h1{
@@ -56,14 +56,10 @@
 .songs-list {
     width: 100%;  
     padding: 0;  
-}
-
-.songs-list ol {
     list-style: none;  
     margin: 0;  
-    padding: 0; 
-    width: 100%;
 }
+
 
 .songs-ordered-list li:hover{
     background-color: hsl(0, 11%, 20%);

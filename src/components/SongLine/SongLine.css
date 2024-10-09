@@ -17,9 +17,12 @@
     width: 100%; /* Ensure this takes the full width of its container */
 }
 
-.song-info p:hover{
-    text-decoration: underline;
-    cursor: pointer;
+.song-info button{
+    color: white;
+    background: none;  
+    border: none;
+    padding: 5px;  
+    
 }
 
 .song-info > div:first-child {
@@ -31,17 +34,23 @@
 }
 
 
-.songs-list ol {
-    list-style-type: decimal;  /* Ensures numbers are shown */
-    padding: 20px;  /* Adds some padding to align numbers properly */
+.song-artist:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.song-title:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .right-controls {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* This ensures content within this div is pushed to the right */
-    flex-shrink: 0; /* Prevents this section from shrinking */
+    justify-content: flex-end;
+    margin-left: auto;
 }
+
 
 .song-info p, .right-controls p {
     margin: 0 10px;
@@ -53,12 +62,18 @@
 
 
 .addToPlaylist-button {
+    color: white;
     background: none;
     border: none;
     color: inherit;
     cursor: pointer;
     padding: 5px 10px;
     font-size: 24px;
+}
+
+.addToPlaylist-button:hover {
+    color: hsl(141, 73%, 42%);
+    transform: scale(1.1);  /* Makes the button 10% larger */
 }
 
 .play-button {

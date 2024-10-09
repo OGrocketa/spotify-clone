@@ -6,12 +6,10 @@ import "./SongLine.css"
 const SongLine = ({ songData, artistName }) => {
     return (
         <div className="song-line-container">
-            {/* Play button */}
-            <button className="play-button">
-                CHUJ!
-            </button>
-            
             <div className="song-info">
+                <button>
+                    <IoIosPlay size={20}/>
+                </button>
                 <div>
                     <p className='song-title'>{songData.title}</p>
                     <p className='song-artist'>{artistName}</p>
