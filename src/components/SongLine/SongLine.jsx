@@ -6,18 +6,22 @@ import "./SongLine.css"
 const SongLine = ({ songData, artistName }) => {
     return (
         <div className="song-line-container">
+            {/* Play button */}
             <button className="play-button">
-                <IoIosPlay />
+                CHUJ!
             </button>
+            
             <div className="song-info">
                 <div>
-                    <p>{songData.title}</p>
-                    <p>{artistName}</p>
+                    <p className='song-title'>{songData.title}</p>
+                    <p className='song-artist'>{artistName}</p>
                 </div>
-                <button className="addToPlaylist-button">
-                    <IoMdAddCircleOutline />
-                </button>
-                <p>{songData.duration}</p>
+                <div className="right-controls">
+                    <button className="addToPlaylist-button">
+                        <IoMdAddCircleOutline />
+                    </button>
+                    <p>{songData.duration}</p>
+                </div>
             </div>
         </div>
     );

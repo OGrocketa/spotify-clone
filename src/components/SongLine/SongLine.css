@@ -1,0 +1,80 @@
+.song-line-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    flex:1;
+    
+}
+
+
+
+.song-info {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure this takes the full width of its container */
+}
+
+.song-info p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.song-info > div:first-child {
+    flex-grow: 1;  /* Allows this div to take up available space */
+    display: flex;
+    flex-direction: column;  /* Stacks the children vertically */
+    justify-content: center; /* Centers the content vertically */
+    align-items: flex-start;  /* Aligns items to the start of the flex container (left side) */
+}
+
+
+.songs-list ol {
+    list-style-type: decimal;  /* Ensures numbers are shown */
+    padding: 20px;  /* Adds some padding to align numbers properly */
+}
+
+.right-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* This ensures content within this div is pushed to the right */
+    flex-shrink: 0; /* Prevents this section from shrinking */
+}
+
+.song-info p, .right-controls p {
+    margin: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.addToPlaylist-button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 24px;
+}
+
+.play-button {
+    margin-right: 10px;  /* Adds some space between the play button and the song info */
+    background: none;
+    border: none;
+    color: white;  /* Adjust color as needed */
+    cursor: pointer;
+    font-size: 24px;  /* Adjust size as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.song-artist{
+    font-size: 12px ;
+}
+

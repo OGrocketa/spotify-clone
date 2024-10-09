@@ -87,9 +87,12 @@ const AlbumProfile = () => {
             </div>
             
             <div className='songs-list'>
-                <ol>
+                <ol className='songs-ordered-list'>
                     {album.songs.map((song, index) => (
-                        <SongLine key={index} songData={song} artistName={album.artistName} />
+                        <li key={index}>
+                            <SongLine  songData={song} artistName={album.artistName} />
+                        </li>
+                        
                     ))}
                 </ol>
             </div>

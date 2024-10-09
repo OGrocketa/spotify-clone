@@ -21,6 +21,7 @@
     align-items: center;
     padding: 20px;
     background-color: hsl(0, 11%, 12%);
+    border-radius: 10px;
 
 }
 
@@ -51,3 +52,25 @@
     border-radius: 50%;
     padding: 10px;
 }
+
+.songs-list {
+    width: 100%;  
+    padding: 0;  
+}
+
+.songs-list ol {
+    list-style: none;  
+    margin: 0;  
+    padding: 0; 
+    width: 100%;
+}
+
+.songs-ordered-list li:hover{
+    background-color: hsl(0, 11%, 20%);
+    border-radius: 10px;
+}
+
+
+
+
+
