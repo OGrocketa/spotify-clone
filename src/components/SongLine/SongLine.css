@@ -17,7 +17,7 @@
 .song-info {
     display: flex;
     align-items: center;
-    width: 100%; /* Ensure this takes the full width of its container */
+    width: 100%;
 }
 
 .song-info button{

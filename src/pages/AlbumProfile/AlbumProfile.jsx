@@ -1,7 +1,6 @@
 import React from 'react';
 import "./AlbumProfile.css"
-import SongLine from '../../components/SongLine/SongLine';
-
+import SongsList from '../../components/SongsList/SongsList';
 
 
 const albumLengthObj = (albumLength) => {
@@ -86,16 +85,7 @@ const AlbumProfile = () => {
                 <button className='play-button'></button>
             </div>
             
-            <div className='songs-list'>
-                <ol className='songs-ordered-list'>
-                    {album.songs.map((song, index) => (
-                        <li key={index}>
-                            <SongLine  songData={song} artistName={album.artistName} />
-                        </li>
-                        
-                    ))}
-                </ol>
-            </div>
+            <SongsList songs={album.songs} artistName={album.artistName} />
 
         </div>
     );
