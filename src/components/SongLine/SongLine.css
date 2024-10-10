@@ -9,6 +9,9 @@
     
 }
 
+.song-line-container:hover .addToPlaylist-button {
+    display: flex; 
+}
 
 
 .song-info {
@@ -69,6 +72,7 @@
     cursor: pointer;
     padding: 5px 10px;
     font-size: 24px;
+    display: none;
 }
 
 .addToPlaylist-button:hover {
