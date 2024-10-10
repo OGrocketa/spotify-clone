@@ -6,13 +6,13 @@ import SongLine from '../SongLine/SongLine';
 const SongsList = ({ songs, artistName }) => {
     return (
         <div className='songs-list'>
-            <ol className='songs-ordered-list'>
+            <ul className='songs-ordered-list'>
                 {songs.map((song, index) => (
                     <li key={index}>
-                        <SongLine songData={song} artistName={artistName} />
+                        <SongLine songData={song} artistName={artistName} num={index} />
                     </li>
                 ))}
-            </ol>
+            </ul>
         </div>
     );
 }

@@ -2,12 +2,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    flex:1;
+    width: 100%;  
+    padding: 10px; 
+    box-sizing: border-box; /* Ensures padding is included in width */
     
 }
+
+.song-line-container:hover{
+    background-color: hsl(0, 11%, 9%);
+}
+
 
 .song-line-container:hover .addToPlaylist-button {
     display: flex; 
@@ -17,6 +21,7 @@
 .song-info {
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Ensures space is distributed between children */
     width: 100%;
 }
 
@@ -24,16 +29,25 @@
     color: white;
     background: none;  
     border: none;
-    padding: 5px;  
+    padding: 5px;
+    border: 2px red solid;
+}
+
+.song-index{
+    color: white;
+    background: none;  
+    border: none;
+    padding: 10px; 
+    border: 2px blue solid;
     
 }
 
-.song-info > div:first-child {
-    flex-grow: 1;  /* Allows this div to take up available space */
+.song-title-and-artist-container {
+    flex-grow: 1; 
     display: flex;
-    flex-direction: column;  /* Stacks the children vertically */
-    justify-content: center; /* Centers the content vertically */
-    align-items: flex-start;  /* Aligns items to the start of the flex container (left side) */
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 
@@ -60,6 +74,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1
 }
 
 
