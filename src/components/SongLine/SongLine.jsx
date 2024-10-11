@@ -26,8 +26,8 @@ const SongLine = ({ songData, artistName ,num}) => {
                     <p className='song-artist'>{artistName}</p>
                 </div>
                 <div className="right-controls">
-                    <button className="addToPlaylist-button">
-                        <IoMdAddCircleOutline size={20} />
+                    <button className="add-to-playlist-button">
+                        <IoMdAddCircleOutline size={22} />
                     </button>
                     <p>{songData.duration}</p>
                 </div>

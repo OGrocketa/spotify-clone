@@ -1,0 +1,38 @@
+.play-album-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.play-album-button {
+    width: 60px;
+    height: 60px;
+    background-color:hsl(141, 73%, 42%) ;
+    border-radius: 50%; /* Make it round */
+    border-color: hsl(141, 73%, 42%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 10px; /* Space between buttons */
+}
+
+.play-album-button:hover{
+    background-color: hsl(141, 73%, 52%);
+    transform: scale(1.1);
+}
+
+.add-to-library-button {
+    color: hsl(0, 0%, 70%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.add-to-library-button:hover{
+    color: hsl(0, 0%, 85%);
+    transform: scale(1.1);
+}
+

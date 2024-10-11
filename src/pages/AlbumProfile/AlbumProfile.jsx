@@ -2,7 +2,8 @@ import React from 'react';
 import "./AlbumProfile.css"
 import SongsList from '../../components/SongsList/SongsList';
 import { LuClock3 } from "react-icons/lu";
-
+import PlayAlbumLine from '../../components/PlayAlbumLine/PlayAlbumLine';
+import AlbumHeader from '../../components/AlbumHeader/AlbumHeader';
 
 const albumLengthObj = (albumLength) => {
     // Split the time string into parts
@@ -31,8 +32,8 @@ const AlbumProfile = () => {
         "artistName": "Mac Miller",
         "releaseDate": "2018-08-03",
         "type":"album",
-        "albumLength":"9:51",
-        "amountOfTracks":2,
+        "albumLength":"60:42",
+        "amountOfTracks":14,
         "songs": [
           {
             "title": "Self Care",
@@ -118,39 +119,28 @@ const AlbumProfile = () => {
       }
 
     const releaseDate = new Date(album.releaseDate);
+  
     const releaseYear = releaseDate.getFullYear();
     const chuj= albumLengthObj(album.albumLength);
+    console.log(chuj);
 
     return (
         <div className='album-page-container'>
+            <AlbumHeader album={album} artist={artist} />
 
-            <div className='album-presentation'>
-                <img className="album-cover" src={album.cover} alt="" />
-
-                <div className='album-info'>
-                    <div className='album-info-main'>
-                        <p>{album.type}</p>
-                        <h1>{album.title}</h1>
-                    </div>
-
-                    <div className='album-info-additional'>
-                        <img className="artist-avatar" src={artist.avatar} alt="" />
-                
-                        <h3>{album.artistName} • {releaseYear} • {album.amountOfTracks} tracks, {chuj.minutes} minutes {chuj.seconds} seconds</h3> 
-                    </div>
-                </div>
-                
-                
+            <div className='play-album'>
+                <PlayAlbumLine />
             </div>
+
             <div className='song-list-header'>
                 <span className='header-index'>#</span>
                 <span className='header-title'>Title</span>
                 <LuClock3 className='header-clock-icon' />
-
             </div>
-            <hr />
-            <SongsList songs={album.songs} artistName={album.artistName} />
 
+            <hr />
+
+            <SongsList songs={album.songs} artistName={album.artistName} />
         </div>
     );
 }

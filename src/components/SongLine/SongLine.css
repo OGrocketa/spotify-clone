@@ -78,7 +78,7 @@
     align-items: center;
     justify-content: flex-end;
     padding-left: 10px;
-
+    color: hsl(0, 0%, 70%);
 }
 
 
@@ -93,13 +93,13 @@
 
 
 
-.addToPlaylist-button {
-    color: white;
+.add-to-playlist-button {
+    color: hsl(0, 0%, 70%);
     background: none;
     cursor: pointer;
 }
 
-.addToPlaylist-button:hover {
+.add-to-playlist-button:hover {
     color: hsl(141, 73%, 42%);
     transform: scale(1.1);  /* Makes the button 10% larger */
 }
