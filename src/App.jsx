@@ -4,7 +4,7 @@ import './App.css'
 import AlbumCard from './components/AlbumCard/AlbumCard'
 import ArtistCard from './components/ArtistCard/ArtistCard'
 import AlbumProfile from './pages/AlbumProfile/AlbumProfile'
-
+import SongProfile from './pages/SongProfile/SongProfile'
 
 const chuj = {
   "id": 1,
@@ -46,7 +46,7 @@ function App() {
       <Router>
         {/* <ArtistCard artistData={chuj}/>
         <AlbumCard albumData={chuj2}/> */}
-        <AlbumProfile/>
+        {/* <AlbumProfile/> */}
       </Router>
     </>
   );
