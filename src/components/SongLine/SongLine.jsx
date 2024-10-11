@@ -13,11 +13,13 @@ const SongLine = ({ songData, artistName ,num}) => {
         >
 
             <div className="song-info">
-                {hover ? 
-                    (<button > <IoIosPlay size={20}/> </button>)
-                    :
-                    (<div className="song-index">{num + 1}</div>)
-                }
+                <div className='index-play-container'>
+                    {hover ? 
+                        (<button > <IoIosPlay size={20}/> </button>)
+                        :
+                        (<div className="song-index">{num + 1}</div>)
+                    }
+                </div>
                 
                 <div className='song-title-and-artist-container'>
                     <p className='song-title'>{songData.title}</p>
@@ -25,7 +27,7 @@ const SongLine = ({ songData, artistName ,num}) => {
                 </div>
                 <div className="right-controls">
                     <button className="addToPlaylist-button">
-                        <IoMdAddCircleOutline />
+                        <IoMdAddCircleOutline size={20} />
                     </button>
                     <p>{songData.duration}</p>
                 </div>

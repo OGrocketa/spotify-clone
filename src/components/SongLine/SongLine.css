@@ -5,11 +5,12 @@
     width: 100%;  
     padding: 10px; 
     box-sizing: border-box; /* Ensures padding is included in width */
+    border-radius: 10px;
     
 }
 
 .song-line-container:hover{
-    background-color: hsl(0, 11%, 9%);
+    background-color: hsl(0, 11%, 20%);
 }
 
 
@@ -23,24 +24,33 @@
     align-items: center;
     justify-content: space-between; /* Ensures space is distributed between children */
     width: 100%;
-}
-
-.song-info button{
-    color: white;
-    background: none;  
-    border: none;
-    padding: 5px;
-    border: 2px red solid;
-}
-
-.song-index{
-    color: white;
-    background: none;  
-    border: none;
-    padding: 10px; 
-    border: 2px blue solid;
     
 }
+
+
+
+.index-play-container {
+    width: 40px;  
+    height: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.song-index, .song-info button {
+    color: white;
+    background: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;  
+    border: none;
+
+}
+
 
 .song-title-and-artist-container {
     flex-grow: 1; 
@@ -62,19 +72,23 @@
 }
 
 .right-controls {
+
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    margin-left: auto;
+    padding-left: 10px;
+
 }
 
 
 .song-info p, .right-controls p {
     margin: 0 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex: 1
+}
+
+.right-controls p{
+    min-width: 60px;
+    text-align: center;
 }
 
 
@@ -82,12 +96,7 @@
 .addToPlaylist-button {
     color: white;
     background: none;
-    border: none;
-    color: inherit;
     cursor: pointer;
-    padding: 5px 10px;
-    font-size: 24px;
-    display: none;
 }
 
 .addToPlaylist-button:hover {

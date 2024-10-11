@@ -23,6 +23,7 @@
     padding: 20px;
     background-color: hsl(0, 11%, 12%);
     border-radius: 10px;
+    font-weight: bold;
 }
 
 .album-presentation h1{
@@ -43,20 +44,60 @@
     flex-direction: row;
     align-items: center;
     text-align: center;
-
+    font-size: 0.7em; 
+    width: 100%;
+    padding: 5px; 
 }
 
 
 .artist-avatar{
-    max-width: 8%;
+    max-width: 4%;
     border-radius: 50%;
-    padding: 10px;
+    padding-right: 10px;
 }
 
 
 
 
+.song-list-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Spread the header elements */
+    width: 100%;
+    padding: 10px 0;
+    box-sizing: border-box;
+    color: hsl(0, 0%, 70%);
+}
 
+.header-index, .header-title {
+    display: flex;
+    align-items: center;
+}
+
+.header-index {
+    width: 40px; /* Matches the width of the song index container */
+    text-align: center;
+    margin-left: 25px;
+}
+
+.header-title {
+    flex-grow: 1; /* Ensures the title takes up the remaining space */
+    
+}
+
+.header-clock-icon {
+    margin-left: auto;
+    margin-right: 43px;
+    font-size: 20px;
+}
+
+hr {
+    width: 100%;
+    border-color:  hsl(0, 0%, 70%);
+    transform: scaleY(0.2); 
+
+}
 
 
 

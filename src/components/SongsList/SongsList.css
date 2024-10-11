@@ -1,22 +1,20 @@
-.songs-list{
+.songs-list {
     display: flex;
-    flex-direction: row;
-    width:100%;
-    
+    flex-direction: column;
+    width: 100%;
 }
 
-.songs-list ul{
+.songs-ordered-list {
     width: 100%;
-    list-style-type: decimal;  
-    list-style-position: inside;  
+    list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.songs-list li {
+.songs-ordered-list li {
     width: 100%;  
-    display: block; 
+    display: block;
     padding: 0;  
     margin: 0;  
-    box-sizing: border-box;  /* Includes padding in width if any padding is needed */
+    box-sizing: border-box;
 }

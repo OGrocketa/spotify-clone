@@ -3,6 +3,7 @@ import './SongsList.css'
 import SongLine from '../SongLine/SongLine';
 
 
+
 const SongsList = ({ songs, artistName }) => {
     return (
         <div className='songs-list'>
