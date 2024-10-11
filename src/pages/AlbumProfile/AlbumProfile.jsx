@@ -122,7 +122,6 @@ const AlbumProfile = () => {
   
     const releaseYear = releaseDate.getFullYear();
     const chuj= albumLengthObj(album.albumLength);
-    console.log(chuj);
 
     return (
         <div className='album-page-container'>

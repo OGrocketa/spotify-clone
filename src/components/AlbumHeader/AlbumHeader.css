@@ -26,6 +26,12 @@
     height: auto;  
     margin: 2em;
     border-radius: 10px;
+    transition: transform 0.3s ease, cursor 0.3s ease;
+}
+
+.album-cover:hover{
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .album-info-additional {
