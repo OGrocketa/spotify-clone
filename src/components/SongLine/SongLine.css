@@ -104,17 +104,6 @@
     transform: scale(1.1);  /* Makes the button 10% larger */
 }
 
-.play-button {
-    margin-right: 10px;  /* Adds some space between the play button and the song info */
-    background: none;
-    border: none;
-    color: white;  /* Adjust color as needed */
-    cursor: pointer;
-    font-size: 24px;  /* Adjust size as needed */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 
 .song-artist{

@@ -79,5 +79,5 @@
 
 .card-container:hover .play-button{
     opacity: 1;
-    transform: translate(0px, -3px);
+  
 }
