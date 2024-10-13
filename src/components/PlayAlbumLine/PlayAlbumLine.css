@@ -9,13 +9,14 @@
     width: 60px;
     height: 60px;
     background-color:hsl(141, 73%, 42%) ;
-    border-radius: 50%; /* Make it round */
-    border-color: hsl(141, 73%, 42%);
+    border-radius: 50%; 
+    border:none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     margin-right: 10px; /* Space between buttons */
+    transition: transform 0.2s ease ;
 }
 
 .play-album-button:hover{

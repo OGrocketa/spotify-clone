@@ -44,9 +44,10 @@ function App() {
   return (
     <>
       <Router>
-        <ArtistCard artistData={chuj}/>
-        <AlbumCard albumData={chuj2}/>
-        <AlbumProfile/>
+        {/* <ArtistCard artistData={chuj}/>
+        <AlbumCard albumData={chuj2}/>*/}
+        {/* <AlbumProfile/> */}
+        <SongProfile/>
       </Router>
     </>
   );
