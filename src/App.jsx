@@ -15,6 +15,17 @@ const chuj = {
   "type":"Artist"
 };
 
+
+
+const chuj1 = {
+  "id": 2,
+  "name": "Mac Miller",
+  "bio": "Malcolm James McCormick, known professionally as Mac Miller.",
+  "albums": [3, 4],
+  "avatar": "public/artists/mac miller/mac miller.jpg",
+  "type": "Artist"
+};
+
 const chuj2 =     {
   "id": 5,
   "title": "Swimming",
@@ -23,31 +34,48 @@ const chuj2 =     {
   "releaseDate": "2018-08-03",
   "type":"album",
   "tracksCount":"2",
-  "timeLength": "9:51",
+  "albumLength": "9:51",
   "label":"© 2018 Warner Records Inc.",
   "songs": [
     {
       "title": "Self Care",
-      "duration": "5:45",
+      "type":"Song",
+      "albumLength": "5:45",
       "filePath": "public/artists/mac miller/albums/swimming/songs/Mac Miller - Self Care.mp3"
     },
     {
       "title": "Hurt Feelings",
-      "duration": "4:06",
+      "type":"Song",
+      "albumLength": "4:06",
       "filePath": "public/artists/mac miller/albums/swimming/songs/Mac Miller - Hurt Feelings .mp3"
     }
   ],
   "cover": "public/artists/mac miller/albums/swimming/cover.jpg"
 }
 
+const chuj3 = {
+    "artistName":"Mac Miller",
+    "title": "Self Care",
+    "duration": "5:45",
+    "filePath": "public/artists/mac miller/albums/swimming/songs/Mac Miller - Self Care.mp3",
+    "cover": "public/artists/mac miller/albums/swimming/cover.jpg",
+    "type":"Song",
+    "albumLength": "5:45",
+    "releaseDate": "2018-08-03",
+    "lyrics":""
+}
+
+
 function App() {
   return (
     <>
       <Router>
-        {/* <ArtistCard artistData={chuj}/>
-        <AlbumCard albumData={chuj2}/>*/}
-        {/* <AlbumProfile/> */}
-        <SongProfile/>
+        {/* <ArtistCard artistData={chuj}/> */}
+        {/* <AlbumCard albumData={chuj2}/> */}
+        {/* <AlbumProfile/>  */}
+        
+        <SongProfile artist={chuj1} song = {chuj3}/> 
+       
       </Router>
     </>
   );

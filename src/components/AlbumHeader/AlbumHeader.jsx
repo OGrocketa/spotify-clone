@@ -16,6 +16,20 @@ const albumLengthObj = (albumLength) => {
     };
 };
 
+const formatAlbumLength = (albumLength) => {
+    if (albumLength.hours > 4) {
+        return ` around ${albumLength.hours} hours`;
+    } else if (albumLength.hours > 0) {
+        if (albumLength.hours === 1) {
+            return ` ${albumLength.hours} hour ${albumLength.minutes} minutes`;
+        } else {
+            return ` ${albumLength.hours} hours ${albumLength.minutes} minutes`;
+        }
+    } else {
+        return ` ${albumLength.minutes} minutes ${albumLength.seconds} seconds`;
+    }
+};
+
 const AlbumHeader = ({ album, artist }) => {
     const releaseDate = new Date(album.releaseDate);
     const releaseYear = releaseDate.getFullYear();
@@ -36,13 +50,7 @@ const AlbumHeader = ({ album, artist }) => {
                     
                     <h3>
                         <span className='artist-name'>{album.artistName}</span> • {releaseYear} • {album.amountOfTracks} tracks,
-                        {albumLength.hours > 4
-                            ? ` around ${albumLength.hours} hours`
-                            : albumLength.hours > 0
-                                ? albumLength.hours === 1
-                                    ? ` ${albumLength.hours} hour ${albumLength.minutes} minutes`
-                                    : ` ${albumLength.hours} hours ${albumLength.minutes} minutes`
-                                : ` ${albumLength.minutes} minutes ${albumLength.seconds} seconds`}
+                        {formatAlbumLength(albumLength)}
                     </h3> 
                 </div>
             </div>
