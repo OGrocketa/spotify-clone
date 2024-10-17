@@ -62,7 +62,7 @@ const chuj3 = {
     "type":"Song",
     "albumLength": "5:45",
     "releaseDate": "2018-08-03",
-    "lyrics":""
+    "lyrics":"Mhm, mhm Okay Yeah, yeah, yeah, yeah Yeah, yeah, yeah Dollars"
 }
 
 
@@ -72,9 +72,9 @@ function App() {
       <Router>
         {/* <ArtistCard artistData={chuj}/> */}
         {/* <AlbumCard albumData={chuj2}/> */}
-        {/* <AlbumProfile/>  */}
+        <AlbumProfile/> 
         
-        <SongProfile artist={chuj1} song = {chuj3}/> 
+        {/* <SongProfile artist={chuj1} song = {chuj3}/>  */}
        
       </Router>
     </>

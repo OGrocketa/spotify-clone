@@ -57,4 +57,11 @@ hr {
     cursor: pointer;
 }
 
+.copyright-container {
+    text-align: left;      /* Align text inside container to the left */
+    color: hsl(0, 0%, 50%);           /* Darker font color (you can choose a darker shade if needed) */
+    font-size: 14px;       /* Adjust the font size if necessary */
+    padding: 10px 0;       /* Optional: Add some padding */
+    margin-left: 10px;        /* Ensure no margin pushes the container to the right */
+  }
 

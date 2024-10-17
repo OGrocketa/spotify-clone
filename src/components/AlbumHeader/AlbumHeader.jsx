@@ -49,8 +49,10 @@ const AlbumHeader = ({ album, artist }) => {
                     <img className="artist-avatar" src={artist.avatar} alt={artist.name} />
                     
                     <h3>
-                        <span className='artist-name'>{album.artistName}</span> • {releaseYear} • {album.amountOfTracks} tracks,
+                        <span className='artist-name'>{album.artistName}</span> <span className='additional-info'>• {releaseYear} • {album.amountOfTracks} tracks,
                         {formatAlbumLength(albumLength)}
+                        </span>
+                        
                     </h3> 
                 </div>
             </div>

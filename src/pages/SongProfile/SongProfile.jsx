@@ -3,16 +3,19 @@ import SongLine from "../../components/SongLine/SongLine";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 
 const SongProfile = ({ artist, song }) => {
-    console.log(song.AlbumLength);
 
     return (
         <>
             <AlbumHeader artist={artist} album={song} />
             <PlayAlbumLine />
             {song.lyrics && (
-                <div className="Lyrics">
-                    <p>{song.lyrics}</p>
-                </div>
+                <div className="lyrics">
+                    <h1>Lyrics</h1>
+                    {song.lyrics.split('\n').map((line, index) => (
+                  <p key={index}>{line}</p>
+                ))}
+              </div>
+              
             )}
         </>
     );

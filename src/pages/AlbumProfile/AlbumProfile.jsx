@@ -34,6 +34,7 @@ const AlbumProfile = () => {
         "type":"album",
         "albumLength":"60:42",
         "amountOfTracks":14,
+        "label":"© 2018 Warner Records Inc.",
         "songs": [
           {
             "title": "Self Care",
@@ -123,8 +124,14 @@ const AlbumProfile = () => {
     const releaseYear = releaseDate.getFullYear();
     const chuj= albumLengthObj(album.albumLength);
 
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June", "July", "August", 
+      "September", "October", "November", "December"
+    ];
+
     return (
-        <div className='album-page-container'>
+      <>
+       <div className='album-page-container'>
             <AlbumHeader album={album} artist={artist} />
 
             <div className='play-album'>
@@ -141,6 +148,12 @@ const AlbumProfile = () => {
 
             <SongsList songs={album.songs} artistName={album.artistName} />
         </div>
+        <div className='copyright-container'>
+          <p>{`${releaseDate.getDay()} ${releaseDate.toLocaleString('default', { month: 'long' })} ${releaseYear}`}</p>
+          <p>{album.label}</p>
+      </div>
+      </>
+       
     );
 }
 
