@@ -1,26 +1,29 @@
-.song-page-container {
+.lyrics {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-  color: white;
-}
-
-.song-content {
-  width: 80%;
+  align-items: flex-start; 
+  justify-content: flex-start; 
+  width: 100%; 
   max-width: 800px;
-  margin-top: 20px;
-  text-align: left;
+  padding-left: 10px;
+  color: white;
+  
+  
 }
 
-.song-content h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
+.lyrics p {
+  color: hsl(0, 0%, 80%);
+  white-space: pre-wrap; /* Ensures line breaks in lyrics are preserved */
+  line-height: 1.2; /* Adjust this value to control line spacing */
+  margin: 0;
 }
 
-.song-content p {
-  font-size: 1.2em;
-  line-height: 1.5;
-  white-space: pre-wrap; /* Preserves line breaks in song lyrics */
+.lyrics button {
+  background-color: transparent;
+  border: none;
+  color: hsl(0, 0%, 70%);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0;
 }

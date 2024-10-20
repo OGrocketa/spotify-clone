@@ -1,9 +1,18 @@
 import AlbumHeader from "../../components/AlbumHeader/AlbumHeader";
 import SongLine from "../../components/SongLine/SongLine";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
+import ArtistBadge from "../../components/ArtistBadge/ArtistBadge";
+import "./SongProfile.css";
+import { useState } from "react";
 
 const SongProfile = ({ artist, song }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [visibleLines, setVisibleLines] = useState(5);
 
+    const toggleLyrics = () =>{
+      setIsExpanded(!isExpanded);
+      setVisibleLines(isExpanded? 5 : song.lyrics.split('\n').length);
+    } 
     return (
         <>
             <AlbumHeader artist={artist} album={song} />
@@ -11,11 +20,15 @@ const SongProfile = ({ artist, song }) => {
             {song.lyrics && (
                 <div className="lyrics">
                     <h1>Lyrics</h1>
-                    {song.lyrics.split('\n').map((line, index) => (
-                  <p key={index}>{line}</p>
+                    {song.lyrics.split('\n').slice(0,visibleLines).map((line, index) => (
+                      <p key={index}>{line}</p>
                 ))}
+                  <button onClick={toggleLyrics}>
+                    {isExpanded ? 'Show Less' : '...Show More'}
+                  </button>
+
+                  <ArtistBadge artist={artist}/>
               </div>
-              
             )}
         </>
     );
