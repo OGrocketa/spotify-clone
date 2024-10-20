@@ -35,7 +35,7 @@
   padding-bottom: 20px
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1070px) {
   .song-profile-body-container {
     flex-direction: column; /* Stacks the elements vertically */
   }

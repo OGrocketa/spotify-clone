@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const SongProfile = ({ artist, song }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const [visibleLines, setVisibleLines] = useState(5);
+    const [visibleLines, setVisibleLines] = useState(14);
 
     const toggleLyrics = () =>{
       setIsExpanded(!isExpanded);
