@@ -1,3 +1,12 @@
+.song-profile-body-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.artist-badge{
+  width: 100%;
+}
+
 .lyrics {
   display: flex;
   flex-direction: column;
@@ -6,13 +15,10 @@
   width: 100%; 
   max-width: 800px;
   padding-left: 10px;
-  color: white;
-  
-  
 }
 
 .lyrics p {
-  color: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 75%);
   white-space: pre-wrap; /* Ensures line breaks in lyrics are preserved */
   line-height: 1.2; /* Adjust this value to control line spacing */
   margin: 0;
@@ -21,9 +27,20 @@
 .lyrics button {
   background-color: transparent;
   border: none;
-  color: hsl(0, 0%, 70%);
+  color: hsl(0, 0%, 80%);
   font-weight: bold;
   cursor: pointer;
   font-size: 1em;
   padding: 0;
+  padding-bottom: 20px
+}
+
+@media (max-width: 1000px) {
+  .song-profile-body-container {
+    flex-direction: column; /* Stacks the elements vertically */
+  }
+
+  .artist-badge {
+    margin-top: 20px; /* Adds spacing between lyrics and artist badge when stacked */
+  }
 }

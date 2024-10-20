@@ -4,9 +4,9 @@ const ArtistBadge = ({artist}) => {
     return(
         <div className="artist-badge-container">
             <img src={artist.avatar} alt="artist avatar" />
-            <div>
+            <div className="additional-info">
                 <p>{artist.type}</p>
-                <p>{artist.name}</p>
+                <p className="artist-name">{artist.name}</p>
             </div>
         </div>
     );

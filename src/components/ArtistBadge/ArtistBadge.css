@@ -1,0 +1,32 @@
+.artist-badge-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px; /* Optional: Add some padding */
+}
+
+.artist-badge-container:hover {
+    background-color: hsl(0, 11%, 15%);
+}
+
+.artist-badge-container img {
+    margin: 10px;
+    border-radius: 50px;
+    width: 90px;
+}
+
+.additional-info p {
+    color: white;
+    margin: 0; 
+}
+
+.artist-name {
+    font-weight: bold; /* Make the artist name bold */
+}
+
+.artist-name:hover {
+    text-decoration: underline; /* Underline artist name on hover */
+}

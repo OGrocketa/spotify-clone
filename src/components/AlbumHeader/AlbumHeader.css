@@ -7,6 +7,7 @@
     border-radius: 10px;
     font-weight: bold;
     width: 100%;
+    min-width: 800px;
 }
 
 .album-header h1 {
