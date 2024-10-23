@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
-import AlbumCard from './components/AlbumCard/AlbumCard'
-import ArtistCard from './components/ArtistCard/ArtistCard'
-import AlbumProfile from './pages/AlbumProfile/AlbumProfile'
-import SongProfile from './pages/SongProfile/SongProfile'
-import PlayerBar from './components/PlayerBar/PlayerBar'
+import AlbumCard from './components/AlbumCard/AlbumCard.jsx'
+import ArtistCard from './components/ArtistCard/ArtistCard.jsx'
+import AlbumProfile from './pages/AlbumProfile/AlbumProfile.jsx'
+import SongProfile from './pages/SongProfile/SongProfile.jsx'
+import PlayerBar from './components/PlayerBar/PlayerBar.jsx'
 import { chuj, chuj1, chuj2, chuj3 } from './testData.js';
 function App() {
 
