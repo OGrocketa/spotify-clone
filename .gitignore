@@ -13,6 +13,7 @@ dist-ssr
 *.local
 /venv
 __pycache__
+AWS.py
 
 # Editor directories and files
 .vscode/*
