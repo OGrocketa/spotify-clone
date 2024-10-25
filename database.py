@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from AWS import data
 
-SQLALCHEMY_DATABASE_URL = "mysql://admin:{data}@spotify-clone.cveke6ok2dbn.eu-north-1.rds.amazonaws.com:3306/spotify_clone".format(data=data)
+SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{data['USERNAME']}:{data['PASSWORD']}@{data['HOST']}:{data['PORT']}/{data['DATABASE']}"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
