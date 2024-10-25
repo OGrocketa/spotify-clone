@@ -14,7 +14,7 @@ class Artist(Base):
     id = Column(CHAR(36), primary_key=True, default=lambda:str(uuid.uuid4()))
     name = Column(String(255), nullable=False)
     bio = Column(Text, nullable=True)
-    artist_type = Column(Enum('Solo', 'Band'), nullable=False)  # This is correct!
+    artist_type = Column(Enum('Solo', 'Band'), nullable=False) 
     avatar_url = Column(String(255), nullable=True)
     album_ids = Column(JSON, nullable=True)
 
@@ -24,7 +24,7 @@ class Artist(Base):
 class Album(Base):
     __tablename__ = 'albums'
     
-    id = Column(CHAR(36), primary_key=True, default='uuid()')  # Assuming UUID generation happens in the DB
+    id = Column(CHAR(36), primary_key=True, default=lambda:str(uuid.uuid4()))
     artist_id = Column(CHAR(36), ForeignKey('artists.id'), nullable=True)  # ForeignKey to the artist table
     title = Column(String(255), nullable=False)
     label = Column(String(255), nullable=True)
@@ -42,8 +42,14 @@ class Album(Base):
 
 class Song(Base):
     __tablename__ = 'songs'
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    album_id = Column(Integer, ForeignKey('albums.id'))
-    album = relationship("Album", back_populates="songs")
+    
+    id = Column(CHAR(36), primary_key=True, default=lambda:str(uuid.uuid4())) 
+    album_id = Column(CHAR(36), ForeignKey('albums.id'), nullable=True)  # Foreign key to albums table
+    title = Column(String(255), nullable=False)
+    lyrics = Column(Text, nullable=True)
+    song_length = Column(Time, nullable=True)  # Time field for song length
+    play_count = Column(Integer, nullable=True, default=0)  # Default play count is 0
+    file_url = Column(String(255), nullable=True)  # URL of the song file
+
+    # Relationship to Album 
     album = relationship("Album", back_populates="songs")
