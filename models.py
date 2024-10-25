@@ -1,4 +1,5 @@
 # models.py
+import uuid
 from database import Base
 from sqlalchemy import Integer,Column, String, Text, Enum, JSON, ForeignKey
 from sqlalchemy.sql.sqltypes import TIME,TIMESTAMP
@@ -10,7 +11,7 @@ from sqlalchemy.orm import relationship
 
 class Artist(Base):
     __tablename__ = 'artists'
-    id = Column(CHAR(36), primary_key=True, default='uuid()')
+    id = Column(CHAR(36), primary_key=True, default=lambda:str(uuid.uuid4()))
     name = Column(String(255), nullable=False)
     bio = Column(Text, nullable=True)
     artist_type = Column(Enum('Solo', 'Band'), nullable=False)  # This is correct!
