@@ -48,3 +48,15 @@ class Album(AlbumCreate):
 
     class Config:
         from_attributes = True
+
+
+###Song Schema###
+class SongCreate(BaseModel):
+    id: str
+    album_id: Optional[str] = None
+    title: str
+    lyrics: Optional[str] = None
+    song_length: Optional[time] = None
+    play_count: Optional[int] = 0
+    file_url: Optional[HttpUrl] = None
+
