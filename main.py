@@ -31,6 +31,7 @@ def remove_artist(artist_id: str, db: Session = Depends(get_db)):
     
     return artist
 
+
 @app.post("/albums/", response_model=schemas.Album)
 def create_album(album: schemas.Album, db: Session = Depends(get_db)):
     return crud.create_album(db = db, album = album)
@@ -44,6 +45,19 @@ def remove_album(album_id: str, db: Session = Depends(get_db)):
     
     return album
 
+
+@app.post("/songs/", response_model=schemas.Song)
+def create_song(song: schemas.Song, db: Session = Depends(get_db)):
+    return crud.create_song(db=db, song=song)
+
+@app.delete("/songs/{song_id}", response_model=schemas.Song)
+def remove_song(song_id: str, db: Session = Depends(get_db)):
+    song = crud.delete_song(song_id=song_id, db=db)
+
+    if song is None:
+        raise HTTPException(status_code=404, detail="Song not found")
+     
+    return song
 
 
 app.add_middleware(

@@ -23,10 +23,11 @@ def delete_artist(db:Session, artist_id:str):
     db.commit()
     return db_artist
 
+
 def create_album(db: Session, album: schemas.AlbumCreate):
 
 
-    # Step 1: Create a new album instance
+    # Create a new album instance
     db_album = models.Album(
         artist_id=album.artist_id,
         title=album.title,
@@ -57,3 +58,28 @@ def delete_album(db: Session, album_id: str):
     db.delete(db_album)
     db.commit()
     return db_album
+
+
+def create_song(db: Session, song: schemas.SongCreate):
+    db_song = models.Song(
+        album_id = song.album_id,
+        title = song.title,
+        lyrics = song.lyrics,
+        song_length = song.song_length,
+        play_count = song.play_count,
+        file_url = song.file_url,
+    )
+
+    db.add(db_song)
+    db.commit()
+    db.refresh(db_song)
+    return song
+    
+def delete_song(db: Session, song_id: str):
+    db_song = db.query(models.Song).filter(models.Song.id == song_id).first()
+    if db_song is None:
+        return None
+    
+    db.delete(db_song)
+    db.commit()
+    return db_song
