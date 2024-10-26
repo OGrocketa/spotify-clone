@@ -31,20 +31,21 @@ class AlbumType(str, Enum):
 # Schema for creating an album
 class AlbumCreate(BaseModel):
     title: str
+    artist_id: str = None
     label: Optional[str] = None
-    album_length: Optional[time] = None
-    track_count: Optional[int] = None
-    release_date: Optional[datetime] = None
+    album_length: time = None
+    track_count: int = None
+    release_date: datetime = None
     cover_url: Optional[HttpUrl] = None  # Validates the URL for the cover
     album_type: AlbumType  # Enum for 'Album' or 'Single'
     song_ids: Optional[List[int]] = None  # List of song IDs
+      
 
     
 
 # Schema for returning an album (includes the ID field)
 class Album(AlbumCreate):
     id: str  # The ID will be auto-generated
-    artist_id: Optional[str] = None  # Optional artist ID
 
     class Config:
         from_attributes = True

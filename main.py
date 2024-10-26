@@ -31,7 +31,9 @@ def remove_artist(artist_id: str, db: Session = Depends(get_db)):
     
     return artist
 
-
+@app.post("/albums/", response_model=schemas.Album)
+def create_album(album: schemas.Album, db: Session = Depends(get_db)):
+    return crud.create_album(db = db, album = album)
 
 
 

@@ -25,12 +25,12 @@ class Album(Base):
     __tablename__ = 'albums'
     
     id = Column(CHAR(36), primary_key=True, default=lambda:str(uuid.uuid4()))
-    artist_id = Column(CHAR(36), ForeignKey('artists.id'), nullable=True)  # ForeignKey to the artist table
+    artist_id = Column(CHAR(36), ForeignKey('artists.id'), nullable=False)  # ForeignKey to the artist table
     title = Column(String(255), nullable=False)
     label = Column(String(255), nullable=True)
-    album_length = Column(TIME, nullable=True)  # Time field for album length
-    track_count = Column(Integer, nullable=True)
-    release_date = Column(TIMESTAMP, nullable=True, default='CURRENT_TIMESTAMP')
+    album_length = Column(TIME, nullable=False)  # Time field for album length
+    track_count = Column(Integer, nullable=False)
+    release_date = Column(TIMESTAMP, nullable=False, default='CURRENT_TIMESTAMP')
     cover_url = Column(String(255), nullable=True)
     album_type = Column(Enum('Album', 'Single'), nullable=False)  # Enum for album type
     song_ids = Column(JSON, nullable=True)  # JSON field for storing song IDs
