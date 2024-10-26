@@ -7,7 +7,6 @@ def create_artist(db: Session, artist: schemas.ArtistCreate):
         bio = artist.bio,
         artist_type = artist.artist_type,
         avatar_url = artist.avatar_url,
-        album_ids = artist.album_ids
     )
     db.add(db_artist)
     db.commit()
@@ -25,6 +24,8 @@ def delete_artist(db:Session, artist_id:str):
     return db_artist
 
 def create_album(db: Session, album: schemas.AlbumCreate):
+
+
     # Step 1: Create a new album instance
     db_album = models.Album(
         artist_id=album.artist_id,
@@ -35,7 +36,6 @@ def create_album(db: Session, album: schemas.AlbumCreate):
         release_date=album.release_date,
         cover_url=album.cover_url,
         album_type=album.album_type,
-        song_ids=album.song_ids,
     )
 
     # Add the album to the session and commit it to get the generated ID
@@ -43,23 +43,17 @@ def create_album(db: Session, album: schemas.AlbumCreate):
     db.commit()
     db.refresh(db_album)  # Now db_album has an ID
 
-    # Step 2: Retrieve the artist and update the album_ids field
-    db_artist = db.query(models.Artist).filter(models.Artist.id == album.artist_id).first()
+    return db_album
 
-    if db_artist:
-        # Initialize album_ids as a list if it's currently None
-        if db_artist.album_ids is None:
-            db_artist.album_ids = [db_album.id]
-        else:
-            db_artist.album_ids.append(db_album.id)  # Append the new album ID to the album_ids list
+def delete_album(db: Session, album_id: str):
+    # Query to find the album
+    db_album = db.query(models.Album).filter(models.Album.id == album_id).first()
 
-        # Update the artist record in the database
-        db.add(db_artist)
-        db.commit()
-        db.refresh(db_artist)
-
-    # If artist not found, return None or handle it as needed
-    else:
+    # If the album is not found, return None
+    if db_album is None:
         return None
-
+    
+    # Delete the album and commit the transaction
+    db.delete(db_album)
+    db.commit()
     return db_album

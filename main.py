@@ -35,6 +35,14 @@ def remove_artist(artist_id: str, db: Session = Depends(get_db)):
 def create_album(album: schemas.Album, db: Session = Depends(get_db)):
     return crud.create_album(db = db, album = album)
 
+@app.delete("/albums/{album_id}", response_model= schemas.Album)
+def remove_album(album_id: str, db: Session = Depends(get_db)):
+    album = crud.delete_album(db=db, album_id=album_id)
+
+    if album is None:
+        raise HTTPException(status_code = 404, detail= "Album not found")
+    
+    return album
 
 
 

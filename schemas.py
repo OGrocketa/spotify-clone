@@ -13,7 +13,7 @@ class ArtistCreate(BaseModel):
     bio: Optional[str] = None
     artist_type: ArtistType
     avatar_url : Optional[HttpUrl]= None
-    album_ids: Optional[List[int]] = None
+    
 
 class Artist(ArtistCreate):
     id:str
