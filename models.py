@@ -16,7 +16,6 @@ class Artist(Base):
     bio = Column(Text, nullable=True)
     artist_type = Column(Enum('Solo', 'Band'), nullable=False) 
     avatar_url = Column(String(255), nullable=True)
-    album_ids = Column(JSON, nullable=True)
 
     albums = relationship("Album", back_populates="artist")
 
@@ -33,7 +32,7 @@ class Album(Base):
     release_date = Column(TIMESTAMP, nullable=False, default='CURRENT_TIMESTAMP')
     cover_url = Column(String(255), nullable=True)
     album_type = Column(Enum('Album', 'Single'), nullable=False)  # Enum for album type
-    song_ids = Column(JSON, nullable=True)  # JSON field for storing song IDs
+    
 
     # Relationship to artist
     artist = relationship("Artist", back_populates="albums")
