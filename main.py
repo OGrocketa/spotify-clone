@@ -22,6 +22,15 @@ def get_db():
 def create_artist(artist: schemas.ArtistCreate, db: Session = Depends(get_db)):
     return crud.create_artist(db=db, artist=artist)
 
+@app.delete("/artist/{artist_id}" , response_model = schemas.Artist)
+def remove_artist(artist_id: str, db: Session = Depends(get_db)):
+    artist = crud.delete_artist(db = db, artist_id=artist_id)
+
+    if artist is None:
+        raise HTTPException(status_code = 404, detail = "Artist Not Found")
+    
+    return artist
+
 
 
 

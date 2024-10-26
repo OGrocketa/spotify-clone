@@ -47,9 +47,10 @@ class Song(Base):
     album_id = Column(CHAR(36), ForeignKey('albums.id'), nullable=True)  # Foreign key to albums table
     title = Column(String(255), nullable=False)
     lyrics = Column(Text, nullable=True)
-    song_length = Column(Time, nullable=True)  # Time field for song length
+    song_length = Column(TIME, nullable=True)  # Time field for song length
     play_count = Column(Integer, nullable=True, default=0)  # Default play count is 0
     file_url = Column(String(255), nullable=True)  # URL of the song file
 
     # Relationship to Album 
     album = relationship("Album", back_populates="songs")
+    

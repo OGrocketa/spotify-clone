@@ -13,3 +13,15 @@ def create_artist(db: Session, artist: schemas.ArtistCreate):
     db.commit()
     db.refresh(db_artist)
     return db_artist
+
+def delete_artist(db:Session, artist_id:str):
+    db_artist = db.query(models.Artist).filter(models.Artist.id == artist_id).first()
+    
+
+
+    if db_artist is None:
+        return None
+    
+    db.delete(db_artist)
+    db.commit()
+    return db_artist
