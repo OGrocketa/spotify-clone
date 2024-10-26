@@ -40,8 +40,6 @@ class AlbumCreate(BaseModel):
     album_type: AlbumType  # Enum for 'Album' or 'Single'
       
 
-    
-
 # Schema for returning an album (includes the ID field)
 class Album(AlbumCreate):
     id: str  # The ID will be auto-generated

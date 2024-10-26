@@ -7,8 +7,6 @@ from sqlalchemy.dialects.mysql import CHAR
 from sqlalchemy.orm import relationship
 
 
-
-
 class Artist(Base):
     __tablename__ = 'artists'
     id = Column(CHAR(36), primary_key=True, default=lambda:str(uuid.uuid4()))
