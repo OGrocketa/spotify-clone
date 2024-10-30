@@ -31,6 +31,14 @@ def remove_artist(artist_id: str, db: Session = Depends(get_db)):
     
     return artist
 
+@app.get("/artists/{artist_id}", response_model=schemas.Artist)
+def get_artist(artist_id: str, db: Session = Depends(get_db)):
+    artist = db.query(models.Artist).filter(models.Artist.id == artist_id).first()
+    if not artist:
+        raise HTTPException(status_code=404, detail="Artist Not Found")
+    
+    return artist
+
 
 @app.post("/albums/", response_model=schemas.Album)
 def create_album(album: schemas.Album, db: Session = Depends(get_db)):
