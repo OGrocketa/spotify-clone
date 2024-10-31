@@ -76,13 +76,13 @@ async function fetchSong(songId) {
   }
 }
 
-const song = await fetchSong('38c1ff6b-f68d-4e4a-9ceb-6d8fbc666ddd');
-console.log(song);
-const album = await fetchAlbum(song.album_id);
-console.log(album);
+// const song = await fetchSong('38c1ff6b-f68d-4e4a-9ceb-6d8fbc666ddd');
+// console.log(song);
+// const album = await fetchAlbum(song.album_id);
+// console.log(album);
 
-const artist = await fetchArtist(album.artist_id);
-console.log(artist);
+// const artist = await fetchArtist(album.artist_id);
+// console.log(artist);
 
 
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import './AlbumHeader.css';
 
-const albumLengthObj = (albumLength) => {
-    const parts = albumLength.split(':');
+const albumLengthObj = (album_length) => {
+    const parts = album_length.split(':');
     let hours = parseInt(parts[0], 10);
     let minutes = parseInt(parts[1], 10);
     let seconds = parseInt(parts[2], 10);
@@ -14,28 +14,28 @@ const albumLengthObj = (albumLength) => {
     };
 };
 
-const formatAlbumLength = (albumLength) => {
-    if (albumLength.hours > 4) {
-        return ` around ${albumLength.hours} hours`;
-    } else if (albumLength.hours > 0) {
-        if (albumLength.hours === 1) {
-            return ` ${albumLength.hours} hour ${albumLength.minutes} minutes`;
+const formatAlbumLength = (album_length) => {
+    if (album_length.hours > 4) {
+        return ` around ${album_length.hours} hours`;
+    } else if (album_length.hours > 0) {
+        if (album_length.hours === 1) {
+            return ` ${album_length.hours} hour ${album_length.minutes} minutes`;
         } else {
-            return ` ${albumLength.hours} hours ${albumLength.minutes} minutes`;
+            return ` ${album_length.hours} hours ${album_length.minutes} minutes`;
         }
     } else {
-        return ` ${albumLength.minutes} minutes ${albumLength.seconds} seconds`;
+        return ` ${album_length.minutes} minutes ${album_length.seconds} seconds`;
     }
 };
 
 const AlbumHeader = ({ album, artist }) => {
-    const releaseDate = new Date(album.releaseDate);
+    const releaseDate = new Date(album.release_date);
     const releaseYear = releaseDate.getFullYear();
-    const albumLength = albumLengthObj(album.albumLength);
+    const album_length = albumLengthObj(album.album_length);
 
     return (
         <div className='album-header'>
-            <img className="album-cover" src={album.cover} alt="" />
+            <img className="album-cover" src={album.cover_url} alt="" />
 
             <div className='album-info'>
                 <div className='album-info-main'>
@@ -50,7 +50,7 @@ const AlbumHeader = ({ album, artist }) => {
                         <span className='artist-name'>{album.artistName}</span>
                         <span className='additional-info'>• {releaseYear} • 
                         {album.amountOfTracks > 1 && ` • ${album.amountOfTracks} tracks`}
-                        {formatAlbumLength(albumLength)}
+                        {formatAlbumLength(album_length)}
                         </span>
                         
                     </h3> 

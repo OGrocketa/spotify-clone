@@ -19,38 +19,38 @@ export const chuj1 = {
 export const chuj2 = {
   id: 5,
   title: "Swimming",
-  artistId: 3,
+  artist_id: 3,
   artistName:"Mac Miller",
-  releaseDate: "2018-08-03",
+  release_date: "2018-08-03",
   type:"album",
-  tracksCount:"2",
-  albumLength: "9:51",
+  track_count:"2",
+  album_length: "9:51",
   label:"© 2018 Warner Records Inc.",
   songs: [
     {
       title: "Self Care",
       type:"Song",
-      albumLength: "5:45",
+      album_length: "5:45",
       filePath: "public/artists/mac miller/albums/swimming/songs/Mac Miller - Self Care.mp3"
     },
     {
       title: "Hurt Feelings",
       type:"Song",
-      albumLength: "4:06",
+      album_length: "4:06",
       filePath: "public/artists/mac miller/albums/swimming/songs/Mac Miller - Hurt Feelings .mp3"
     }
   ],
-  cover: "public/artists/mac miller/albums/swimming/cover.jpg"
+  cover_url: "public/artists/mac miller/albums/swimming/cover.jpg"
 }
   
 export const chuj3 = {
   artistName:"Mac Miller",
   title: "Self Care",
   filePath: "public/artists/mac miller/albums/swimming/songs/Mac Miller - Self Care.mp3",
-  cover: "public/artists/mac miller/albums/swimming/cover.jpg",
+  cover_url: "public/artists/mac miller/albums/swimming/cover.jpg",
   type:"Song",
-  albumLength: "00:5:45",
-  releaseDate: "2018-08-03",
+  album_length: "00:5:45",
+  release_date: "2018-08-03",
   lyrics: `Mhm, mhm
 Okay
 Yeah, yeah, yeah, yeah
