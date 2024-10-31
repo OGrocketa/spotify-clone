@@ -41,7 +41,7 @@ def get_artist(artist_id: str, db: Session = Depends(get_db)):
 
 
 @app.post("/albums/", response_model=schemas.Album)
-def create_album(album: schemas.Album, db: Session = Depends(get_db)):
+def create_album(album: schemas.AlbumCreate, db: Session = Depends(get_db)):
     return crud.create_album(db = db, album = album)
 
 @app.delete("/albums/{album_id}", response_model= schemas.Album)
@@ -53,9 +53,17 @@ def remove_album(album_id: str, db: Session = Depends(get_db)):
     
     return album
 
+@app.get("/albums/{album}", response_model=schemas.Album)
+def get_album(album_id: str, db: Session = Depends(get_db)):
+    album = db.query(models.Album).filter(models.Album.id == album_id).first()
+    if not album:
+        raise HTTPException(status_code=404, detail="Album Not Found")
+    
+    return album
+
 
 @app.post("/songs/", response_model=schemas.Song)
-def create_song(song: schemas.Song, db: Session = Depends(get_db)):
+def create_song(song: schemas.SongCreate, db: Session = Depends(get_db)):
     return crud.create_song(db=db, song=song)
 
 @app.delete("/songs/{song_id}", response_model=schemas.Song)
@@ -65,6 +73,14 @@ def remove_song(song_id: str, db: Session = Depends(get_db)):
     if song is None:
         raise HTTPException(status_code=404, detail="Song not found")
      
+    return song
+
+@app.get("/songs/{song_id}", response_model=schemas.Song)
+def get_song(song_id: str, db: Session = Depends(get_db)):
+    song = db.query(models.Song).filter(models.Song.id == song_id).first()
+    if not song:
+        raise HTTPException(status_code=404, detail="Song Not Found")
+    
     return song
 
 
