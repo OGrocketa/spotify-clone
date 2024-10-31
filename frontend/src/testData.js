@@ -46,11 +46,10 @@ export const chuj2 = {
 export const chuj3 = {
   artistName:"Mac Miller",
   title: "Self Care",
-  duration: "5:45",
   filePath: "public/artists/mac miller/albums/swimming/songs/Mac Miller - Self Care.mp3",
   cover: "public/artists/mac miller/albums/swimming/cover.jpg",
   type:"Song",
-  albumLength: "5:45",
+  albumLength: "00:5:45",
   releaseDate: "2018-08-03",
   lyrics: `Mhm, mhm
 Okay

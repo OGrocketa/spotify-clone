@@ -3,11 +3,9 @@ import './AlbumHeader.css';
 
 const albumLengthObj = (albumLength) => {
     const parts = albumLength.split(':');
-    let minutes = parseInt(parts[0], 10);
-    const seconds = parseInt(parts[1], 10);
-
-    const hours = Math.floor(minutes / 60);
-    minutes = minutes % 60;
+    let hours = parseInt(parts[0], 10);
+    let minutes = parseInt(parts[1], 10);
+    let seconds = parseInt(parts[2], 10);
 
     return {
         hours: hours,
