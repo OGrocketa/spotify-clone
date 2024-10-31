@@ -32,9 +32,30 @@ async function fetchArtist(artistId) {
   }
 }
 
+async function fetchAlbum(albumId) {
+  const url = `http://localhost:8000/albums/${albumId}`;
 
-async function fetchAlbumByArtistID(artistId) {
-  const url = `http://localhost:8000/albums/${artistId}`;
+  try{
+    const response = await fetch(url,{
+      method:'GET',
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if(!response.ok){
+      throw new Error(`HTTP error! Status: ${response.status}`)
+    }
+
+    const data = await response.json();
+    return data;
+  }catch(error){
+    console.error('Failed to fetch album: ',error); 
+  }
+}
+
+async function fetchSong(songId) {
+  const url = `http://localhost:8000/songs/${songId}`;
 
   try{
     const response = await fetch(url,{
@@ -55,8 +76,15 @@ async function fetchAlbumByArtistID(artistId) {
   }
 }
 
-const song = await fetchArtist('2a83a22d-3397-4ac0-8b08-d9582b98b1b8');
-console.log(song)
+const song = await fetchSong('38c1ff6b-f68d-4e4a-9ceb-6d8fbc666ddd');
+console.log(song);
+const album = await fetchAlbum(song.album_id);
+console.log(album);
+
+const artist = await fetchArtist(album.artist_id);
+console.log(artist);
+
+
 
 function App() {
 
@@ -66,8 +94,7 @@ function App() {
         {/* <ArtistCard artistData={chuj}/> */}
         {/* <AlbumCard albumData={chuj2}/> */}
         {/* <AlbumProfile/>  */}
-        
-        <SongProfile artist={chuj1} song = {chuj3}/> 
+        <SongProfile artist={chuj1} song={chuj3} /> 
        
       </Router>
 

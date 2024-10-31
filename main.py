@@ -53,7 +53,7 @@ def remove_album(album_id: str, db: Session = Depends(get_db)):
     
     return album
 
-@app.get("/albums/{album}", response_model=schemas.Album)
+@app.get("/albums/{album_id}", response_model=schemas.Album)
 def get_album(album_id: str, db: Session = Depends(get_db)):
     album = db.query(models.Album).filter(models.Album.id == album_id).first()
     if not album:
