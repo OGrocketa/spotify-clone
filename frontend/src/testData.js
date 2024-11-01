@@ -3,7 +3,7 @@ export const chuj = {
   name: "Eminem",
   bio: "Marshall Bruce Mathers III, known professionally as Eminem.",
   albums: [1, 2],
-  avatar: "public/artists/eminem/eminem.jpg",
+  avatar: "https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/eminem/eminem.jpg",
   type:"Artist"
 };
 
