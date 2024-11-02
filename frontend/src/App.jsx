@@ -7,20 +7,24 @@ import AlbumProfile from './pages/AlbumProfile/AlbumProfile.jsx'
 import SongProfile from './pages/SongProfile/SongProfile.jsx'
 import PlayerBar from './components/PlayerBar/PlayerBar.jsx'
 import ArtistProfile from './pages/ArtistProfile/ArtistProfile.jsx'
-import { chuj, chuj1, chuj2, chuj3 } from './testData.js';
-import {fetchArtist} from './api/index.js'
+import {fetchAlbum, fetchArtist,fetchSong,fetchSongsFromAlbum} from './api/index.js'
 
-console.log(await fetchArtist('99770812-4218-46cd-86d1-e65d06a7ddc1'))
+const artist = await fetchArtist('99770812-4218-46cd-86d1-e65d06a7ddc1');
+const album = await fetchAlbum('1f693a7f-6054-4ff6-a8a9-bd8341274c36')
+let album_id = '1f693a7f-6054-4ff6-a8a9-bd8341274c36';
+const songs = await fetchSongsFromAlbum(album_id);
+const song = await fetchSong('0e3098e2-9876-11ef-999d-512ce8086d0d');
+console.log(song);
 
 function App() {
 
   return (
     <>
       <Router>
-        <ArtistCard artistData={chuj}/>
-        {/* <AlbumCard albumData={chuj2}/> */}
-        {/* <AlbumProfile/>  */}
-        {/* <SongProfile artist={chuj1} song={chuj3} />  */}
+        {/* <ArtistCard artistData={artist}/> */}
+        {/* <AlbumCard albumData={album}/> */}
+        {/* <AlbumProfile album_id ={album_id}/>  */}
+        <SongProfile artist={artist} song={song} /> 
         {/* <ArtistProfile artist={chuj1}/> */}
       </Router>
 

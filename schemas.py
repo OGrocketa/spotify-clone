@@ -43,7 +43,6 @@ class AlbumCreate(BaseModel):
 # Schema for returning an album (includes the ID field)
 class Album(AlbumCreate):
     id: str  # The ID will be auto-generated
-
     class Config:
         from_attributes = True
 

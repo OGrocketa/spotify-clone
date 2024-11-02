@@ -83,6 +83,14 @@ def get_song(song_id: str, db: Session = Depends(get_db)):
     
     return song
 
+@app.get("/albums/{album_id}/songs", response_model= list[schemas.Song])
+def get_songs_by_album(album_id: str, db: Session = Depends(get_db)):
+    songs = db.query(models.Song).filter(models.Song.album_id == album_id).all()
+    
+    if not songs:
+        raise HTTPException(status_code=404, detail="No songs found for this album")
+    
+    return songs
 
 app.add_middleware(
     CORSMiddleware,
