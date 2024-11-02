@@ -23,8 +23,8 @@ function App() {
       <Router>
         {/* <ArtistCard artistData={artist}/> */}
         {/* <AlbumCard albumData={album}/> */}
-        {/* <AlbumProfile album_id ={album_id}/>  */}
-        <SongProfile artist={artist} song={song} /> 
+        <AlbumProfile album_id ={album_id}/> 
+        {/* <SongProfile artist={artist} song={song} />  */}
         {/* <ArtistProfile artist={chuj1}/> */}
       </Router>
 
