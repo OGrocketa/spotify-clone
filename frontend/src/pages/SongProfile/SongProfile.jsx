@@ -3,7 +3,7 @@ import SongLine from "../../components/SongLine/SongLine";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 import ArtistBadge from "../../components/ArtistBadge/ArtistBadge";
 import "./SongProfile.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SongProfile = ({ artist, song }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -29,7 +29,7 @@ const SongProfile = ({ artist, song }) => {
                     {isExpanded ? 'Show Less' : '...Show More'}
                   </button>
                 </div>
-
+                
                 <div className="artist-badge">
                   <ArtistBadge artist={artist}/>
                 </div>

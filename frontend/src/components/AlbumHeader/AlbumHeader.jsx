@@ -1,7 +1,14 @@
 import React from 'react';
 import './AlbumHeader.css';
+import { fetchAlbum } from '../../api';
+import { useState,useEffect } from 'react';
 
 const albumLengthObj = (album_length) => {
+    if (!album_length || typeof album_length !== 'string') {
+        // Return a default structure or handle error accordingly
+        return { hours: 0, minutes: 0, seconds: 0 };
+    }
+
     const parts = album_length.split(':');
     let hours = parseInt(parts[0], 10);
     let minutes = parseInt(parts[1], 10);
@@ -29,17 +36,33 @@ const formatAlbumLength = (album_length) => {
 };
 
 const AlbumHeader = ({ album, artist }) => {
+
+    const [fetchedAlbum, setFetchedAlbum] = useState(null);
+    
+    useEffect(() => {
+        if (!album.cover_url && album.album_id) {
+            fetchAlbum(album.album_id)
+                .then(data => {
+                    setFetchedAlbum(data);
+                })
+                .catch(error => console.error('Failed to fetch album', error));
+        }
+    }, [album]);
+
     const releaseDate = new Date(album.release_date);
     const releaseYear = releaseDate.getFullYear();
-    const album_length = albumLengthObj(album.album_length);
+    const album_length = album.album_length ? album.album_length : album.song_length;
+    const album_length_obj = albumLengthObj(album_length);
+    const album_type = album.album_type ? album.album_type : 'Song';
+    
 
     return (
         <div className='album-header'>
-            <img className="album-cover" src={album.cover_url} alt="" />
+            <img className="album-cover" src={(fetchedAlbum || album).cover_url} alt="" />
 
             <div className='album-info'>
                 <div className='album-info-main'>
-                    <p>{album.type}</p>
+                    <p>{album_type}</p>
                     <h1>{album.title}</h1>
                 </div>
 
@@ -50,7 +73,7 @@ const AlbumHeader = ({ album, artist }) => {
                         <span className='artist-name'>{artist.name}</span>
                         <span className='additional-info'>• {releaseYear} • 
                         {album.amountOfTracks > 1 && ` • ${album.amountOfTracks} tracks`}
-                        {formatAlbumLength(album_length)}
+                        {formatAlbumLength(album_length_obj)}
                         </span>
                         
                     </h3> 

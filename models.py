@@ -2,7 +2,7 @@
 import uuid
 from database import Base
 from sqlalchemy import Integer,Column, String, Text, Enum, JSON, ForeignKey
-from sqlalchemy.sql.sqltypes import TIME,TIMESTAMP
+from sqlalchemy.sql.sqltypes import TIME,DATE
 from sqlalchemy.dialects.mysql import CHAR
 from sqlalchemy.orm import relationship
 
@@ -27,7 +27,7 @@ class Album(Base):
     label = Column(String(255), nullable=True)
     album_length = Column(TIME, nullable=False)  # Time field for album length
     track_count = Column(Integer, nullable=False)
-    release_date = Column(TIMESTAMP, nullable=False, default='CURRENT_TIMESTAMP')
+    release_date = Column(DATE, nullable=False, default='CURRENT_DATE')
     cover_url = Column(String(255), nullable=True)
     album_type = Column(Enum('Album', 'Single'), nullable=False)  # Enum for album type
     
@@ -47,7 +47,7 @@ class Song(Base):
     song_length = Column(TIME, nullable=True)  # Time field for song length
     play_count = Column(Integer, nullable=True, default=0)  # Default play count is 0
     file_url = Column(String(255), nullable=True)  # URL of the song file
-
+    release_date = Column(DATE, nullable=False, default='CURRENT_DATE')
     # Relationship to Album 
     album = relationship("Album", back_populates="songs")
     

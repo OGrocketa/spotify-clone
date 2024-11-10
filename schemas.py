@@ -1,7 +1,7 @@
 from pydantic import BaseModel, HttpUrl
 from typing import Optional, List
 from enum import Enum
-from datetime import time, datetime
+from datetime import time, date
 
 ###ARTIST SCHEMA###
 class ArtistType(str,Enum):
@@ -35,9 +35,10 @@ class AlbumCreate(BaseModel):
     label: Optional[str] = None
     album_length: time = None
     track_count: int = None
-    release_date: datetime = None
+    release_date: date = None
     cover_url: Optional[HttpUrl] = None  # Validates the URL for the cover
     album_type: AlbumType  # Enum for 'Album' or 'Single'
+    
       
 
 # Schema for returning an album (includes the ID field)
@@ -55,6 +56,8 @@ class SongCreate(BaseModel):
     song_length: Optional[time] = None
     play_count: Optional[int] = 0
     file_url: Optional[HttpUrl] = None
+    release_date: date = None
+
 
 class Song(SongCreate):
     id: str  # ID of the song
