@@ -88,7 +88,7 @@ export async function fetchSongsFromAlbum(album_id) {
   }
 }
 
-export async function fetchAlbumsByArtistId(artist_id) {
+export async function fetchAlbumsByartist_id(artist_id) {
   const url = `http://localhost:8000/artists/${artist_id}/albums`;
 
   try {
@@ -108,5 +108,21 @@ export async function fetchAlbumsByArtistId(artist_id) {
   } catch (error) {
     console.error('Failed to fetch songs: ', error);
     return [];
+  }
+}
+
+export async function fetchTopSongsByArtist(artist_id) {
+  const url = `http://127.0.0.1:8000/artists/${artist_id}/songs`;
+
+  try {
+      const response = await fetch(url);
+      if (!response.ok) {
+          throw new Error('Network response was not ok: ' + response.statusText);
+      }
+      const songs = await response.json();
+      return songs;
+  } catch (error) {
+      console.error('Error fetching top songs:', error);
+      throw error;
   }
 }
