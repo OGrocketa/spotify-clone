@@ -24,9 +24,9 @@ function App() {
       <Router>
         {/* <ArtistCard artistData={artist}/> */}
         {/* <AlbumCard albumData={album}/> */}
-        <AlbumProfile album_id={swimming}/> 
+        {/* <AlbumProfile album_id={swimming}/>  */}
         {/* <SongProfile artist={artist} song={song} />  */}
-        {/* <ArtistProfile artist={chuj1}/> */}
+        {/* <ArtistProfile artist={ }/> */}
       </Router>
 
     </>
