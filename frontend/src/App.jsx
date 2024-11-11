@@ -20,7 +20,7 @@ let artist_id = '99770812-4218-46cd-86d1-e65d06a7ddc1';
 
 
 function App() {
-
+  
   return (
     <>
       <Router>
@@ -28,7 +28,7 @@ function App() {
         {/* <AlbumCard albumData={album}/> */}
         {/* <AlbumProfile album_id={swimming}/>  */}
         {/* <SongProfile artist={artist} song={song} />  */}
-        <ArtistProfile artist={artist_id}/>
+        <ArtistProfile artist_id={artist_id}/>
       </Router>
 
     </>
