@@ -65,8 +65,8 @@ export async function fetchArtist(artist_id) {
   }
 }
 
-export async function fetchSongsFromAlbum(albumId) {
-  const url = `http://localhost:8000/albums/${albumId}/songs`;
+export async function fetchSongsFromAlbum(album_id) {
+  const url = `http://localhost:8000/albums/${album_id}/songs`;
 
   try {
     const response = await fetch(url, {
@@ -82,6 +82,29 @@ export async function fetchSongsFromAlbum(albumId) {
 
     const data = await response.json();
     return data; // This should be the list of songs
+  } catch (error) {
+    console.error('Failed to fetch songs: ', error);
+    return [];
+  }
+}
+
+export async function fetchAlbumsByArtistId(artist_id) {
+  const url = `http://localhost:8000/artists/${artist_id}/albums`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data; // This should be the list of albums
   } catch (error) {
     console.error('Failed to fetch songs: ', error);
     return [];

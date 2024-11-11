@@ -17,7 +17,7 @@ def get_db():
     finally:
         db.close()
 
-
+#ARTISTS SECTION
 @app.post("/artists/", response_model=schemas.Artist)
 def create_artist(artist: schemas.ArtistCreate, db: Session = Depends(get_db)):
     return crud.create_artist(db=db, artist=artist)
@@ -40,6 +40,7 @@ def get_artist(artist_id: str, db: Session = Depends(get_db)):
     return artist
 
 
+#ALBUMS SECTNOM
 @app.post("/albums/", response_model=schemas.Album)
 def create_album(album: schemas.AlbumCreate, db: Session = Depends(get_db)):
     return crud.create_album(db = db, album = album)
@@ -61,7 +62,15 @@ def get_album(album_id: str, db: Session = Depends(get_db)):
     
     return album
 
+@app.get("/artists/{artist_id}/albums", response_model= list[schemas.Album])
+def get_albums_by_artist_id(artist_id:str, db: Session = Depends(get_db)):
+    albums = db.query(models.Album).filter(models.Album.artist_id == artist_id).all()
+    if not albums:
+        return HTTPException(status_code = 404, detail = "Albums not found")
+    return albums
 
+
+#SONGS SECTION
 @app.post("/songs/", response_model=schemas.Song)
 def create_song(song: schemas.SongCreate, db: Session = Depends(get_db)):
     return crud.create_song(db=db, song=song)
@@ -91,6 +100,8 @@ def get_songs_by_album(album_id: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="No songs found for this album")
     
     return songs
+
+
 
 app.add_middleware(
     CORSMiddleware,

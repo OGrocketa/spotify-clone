@@ -39,6 +39,10 @@ const AlbumProfile = ({album_id}) => {
   const release_date = new Date(album.release_date);
   const release_year = release_date.getFullYear();
 
+  const labels = album.label ? album.label.split("℗") : ["", ""];
+  const firstLabel = labels[0].trim();
+  const secondLabel = `℗ ${labels[1].trim()}`;
+
   return (
     <>
       <div className='album-page-container'>
@@ -59,8 +63,13 @@ const AlbumProfile = ({album_id}) => {
           <SongsList songs={songs} artistName={artist.name} />
       </div>
       <div className='copyright-container'>
-        <p>{`${release_date.getDay()} ${release_date.toLocaleString('default', { month: 'long' })} ${release_year}`}</p>
-        <p>{album.label}</p>
+        <p>{`${release_date.getDate()} ${release_date.toLocaleString('default', { month: 'long' })} ${release_year}`}</p>
+
+        <div className='labels-container'>
+          <p>{firstLabel}</p>
+          <p>{secondLabel}</p>
+        </div>
+        
     </div>
     </>
       

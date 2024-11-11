@@ -63,5 +63,6 @@ hr {
     font-size: 14px;       /* Adjust the font size if necessary */
     padding: 10px 0;       /* Optional: Add some padding */
     margin-left: 10px;        /* Ensure no margin pushes the container to the right */
+    line-height: 0.5; 
   }
 
