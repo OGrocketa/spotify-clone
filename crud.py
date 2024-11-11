@@ -1,5 +1,8 @@
 from sqlalchemy.orm import Session
 import models, schemas
+from models import Song,Album,Artist
+from sqlalchemy import desc
+
 
 def create_artist(db: Session, artist: schemas.ArtistCreate):
     db_artist = models.Artist(
@@ -83,3 +86,7 @@ def delete_song(db: Session, song_id: str):
     db.delete(db_song)
     db.commit()
     return db_song
+
+def get_most_popular_songs_of_artist_by_id(db: Session, artist_id:str):
+   return db.query(Song).join(Album).join(Artist).filter(Artist.id == artist_id).order_by(desc(Song.play_count)).limit(10).all()
+

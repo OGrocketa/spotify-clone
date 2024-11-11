@@ -1,6 +1,7 @@
 import "./ArtistProfile"
 import SongsList from "../../components/SongsList/SongsList";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
+import { fetchArtist } from "../../api";
 
 
 
@@ -14,6 +15,7 @@ function getAlbums (artist_id){
 }
 
 const ArtistProfile = ({artist_id}) =>{
+    const artist = fetchArtist(artist_id);
     return(
         <div className="artist-profile-container">
             <div className="artist-profile-header">

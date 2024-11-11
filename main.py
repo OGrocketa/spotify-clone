@@ -101,6 +101,12 @@ def get_songs_by_album(album_id: str, db: Session = Depends(get_db)):
     
     return songs
 
+@app.get("/artists/{artist_id}/songs", response_model=list[schemas.Song])
+def get_most_popular_songs_of_artist(artist_id: str, db: Session = Depends(get_db)):
+    songs = crud.get_most_popular_songs_of_artist_by_id(db=db, artist_id=artist_id)
+    if songs is None:
+        raise HTTPException(status_code=404, detail="No songs found for the artist")
+    return songs
 
 
 app.add_middleware(
