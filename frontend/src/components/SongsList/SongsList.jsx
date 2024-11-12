@@ -1,14 +1,14 @@
 import React from 'react';
-import './SongsList.css'
+import './SongsList.css';
 import SongLine from '../SongLine/SongLine';
 
+const SongsList = ({ songs, artistName, limit }) => {
+    const displayedSongs = limit ? songs.slice(0, limit) : songs;
 
-
-const SongsList = ({ songs, artistName }) => {
     return (
         <div className='songs-list'>
             <ul className='songs-ordered-list'>
-                {songs.map((song, index) => (
+                {displayedSongs.map((song, index) => (
                     <li key={index}>
                         <SongLine songData={song} artistName={artistName} num={index} />
                     </li>
