@@ -45,11 +45,12 @@
     padding: 5px;
 }
 
-.artist-avatar {
+.artist-avatar  {
     width: 35px;
     height: 35px;
-    border-radius: 50px;
+    border-radius: 50%;
     margin-right: 5px;
+    object-fit: cover;
 }
 
 .artist-name:hover {

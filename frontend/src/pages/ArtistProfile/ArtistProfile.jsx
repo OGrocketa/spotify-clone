@@ -1,4 +1,4 @@
-import "./ArtistProfile"
+import "./ArtistProfile.css"
 import SongsList from "../../components/SongsList/SongsList";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 import { fetchArtist } from "../../api";
@@ -16,7 +16,6 @@ function getAlbums (artist_id){
 }
 
 const ArtistProfile = ({artist_id}) =>{
-    console.log(artist_id);
     const [artist, setArtist] = useState(null);
 
     useEffect(() => {
@@ -37,16 +36,20 @@ const ArtistProfile = ({artist_id}) =>{
         return <div>Loading...</div>;
     }
 
+    const artist_header_background_img = {
+        backgroundImage: `url(${artist.avatar_url})`,
+        
+      };
     
     return(
         <div className="artist-profile-container">
-             <div className="artist-header" style={headerStyle}> 
-                
-             
+             <div className="artist-header" style={artist_header_background_img} > 
+                <h1>{artist.name}</h1>
              </div>  
 
             <PlayAlbumLine/>
             <div className="popular-songs-container">
+
             </div>
 
             <div className="discography-container">

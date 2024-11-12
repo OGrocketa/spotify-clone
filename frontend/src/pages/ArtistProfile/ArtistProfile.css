@@ -1,0 +1,13 @@
+.artist-header{
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.artist-header h1{
+    font-size: 500%;
+    margin: 20px;
+}

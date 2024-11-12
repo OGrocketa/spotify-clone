@@ -27,6 +27,9 @@
 
 .card-container img.round-image {
     border-radius: 50%;
+    width: 150px; /* Adjust as necessary */
+    height: 150px; /* Ensure this is the same as the width */
+
 }
 
 
