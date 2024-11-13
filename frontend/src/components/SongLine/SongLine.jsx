@@ -3,7 +3,7 @@ import { IoIosPlay } from "react-icons/io";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import "./SongLine.css"
 
-const SongLine = ({ song, artistName ,num}) => {
+const SongLine = ({ songData, artistName ,num}) => {
     const [hover, setHover] = useState(false);
     
     return (
@@ -22,14 +22,14 @@ const SongLine = ({ song, artistName ,num}) => {
                 </div>
                 
                 <div className='song-title-and-artist-container'>
-                    <p className='song-title'>{song.title}</p>
+                    <p className='song-title'>{songData.title}</p>
                     <p className='song-artist'>{artistName}</p>
                 </div>
                 <div className="right-controls">
                     <button className="add-to-playlist-button">
                         <IoMdAddCircleOutline size={22} />
                     </button>
-                    <p>{song.duration}</p>
+                    <p>{songData.duration}</p>
                 </div>
             </div>
         </div>
