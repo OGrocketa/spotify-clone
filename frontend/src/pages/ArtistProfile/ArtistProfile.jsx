@@ -4,8 +4,10 @@ import SongsList from "../../components/SongsList/SongsList";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 import AlbumCard from "../../components/AlbumCard/AlbumCard";  // Import AlbumCard
 import { fetchArtist, fetchTopSongsByArtist, fetchAlbumsByartist_id } from "../../api";
+import { useParams } from 'react-router-dom';
 
-const ArtistProfile = ({ artist_id }) => {
+const ArtistProfile = () => {
+    const { artist_id } = useParams();
     const [artist, setArtist] = useState(null);
     const [songs, setSongs] = useState([]);
     const [albums, setAlbums] = useState([]);  // State for albums

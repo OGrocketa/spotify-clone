@@ -5,10 +5,13 @@ import { LuClock3 } from "react-icons/lu";
 import PlayAlbumLine from '../../components/PlayAlbumLine/PlayAlbumLine';
 import AlbumHeader from '../../components/AlbumHeader/AlbumHeader';
 import { fetchAlbum,fetchArtist,fetchSongsFromAlbum} from '../../api';
+import { useParams } from 'react-router-dom';
 
 
 
-const AlbumProfile = ({album_id}) => {
+
+const AlbumProfile = () => {
+  const {album_id} = useParams();
   const [album, setAlbum] = useState(null);
   const [artist, setArtist] = useState(null);
   const [songs, setSongs] = useState([]);

@@ -2,6 +2,8 @@ import React from 'react';
 import './AlbumHeader.css';
 import { fetchAlbum } from '../../api';
 import { useState,useEffect } from 'react';
+import { Link,useParams } from 'react-router-dom';
+
 
 const albumLengthObj = (album_length) => {
     if (!album_length || typeof album_length !== 'string') {
@@ -70,7 +72,9 @@ const AlbumHeader = ({ album, artist }) => {
                     <img className="artist-avatar" src={artist.avatar_url} alt={artist.name} />
                     
                     <h3>
-                        <span className='artist-name'>{artist.name}</span>
+                        <Link to={`/artist/${artist.id}`} className="link-no-style">
+                            <span className='artist-name'>{artist.name}</span>
+                        </Link>
                         <span className='additional-info'>• {releaseYear} • 
                         {album.amountOfTracks > 1 && ` • ${album.amountOfTracks} tracks`}
                         {formatAlbumLength(album_length_obj)}

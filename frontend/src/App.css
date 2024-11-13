@@ -3,3 +3,8 @@ body{
   color: white;
   font-family: Montserrat;
 }
+
+.link-no-style {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits the color from the parent element */
+}
