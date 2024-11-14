@@ -1,10 +1,10 @@
 import "./ArtistCard.css"
 import Card from "../Card/Card";
 
-const ArtistCard = ({artistData}) => {
-    const avatar = artistData.avatar_url;
-    const name = artistData.name;
-    const type = artistData.artist_type;
+const ArtistCard = ({artist}) => {
+    const avatar = artist.avatar_url;
+    const name = artist.name;
+    const type = artist.artist_type;
     const isRound = true;
 
     return(

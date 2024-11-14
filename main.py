@@ -39,7 +39,13 @@ def get_artist(artist_id: str, db: Session = Depends(get_db)):
     
     return artist
 
-
+@app.get('/all_artists', response_model= list[schemas.Artist])
+def get_all_artists(db: Session = Depends(get_db)):
+    artists = db.query(models.Artist).all()
+    if not artists:
+        raise HTTPException(status_code = 404, detail= 'Artists not found')
+    return artists
+    
 #ALBUMS SECTNOM
 @app.post("/albums/", response_model=schemas.Album)
 def create_album(album: schemas.AlbumCreate, db: Session = Depends(get_db)):
