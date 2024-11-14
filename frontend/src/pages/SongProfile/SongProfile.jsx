@@ -3,8 +3,9 @@ import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 import ArtistBadge from "../../components/ArtistBadge/ArtistBadge";
 import "./SongProfile.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { fetchSong,fetchAlbum,fetchArtist } from "../../api";
+
 
 const SongProfile = () => {
     const {song_id} = useParams();
@@ -56,13 +57,17 @@ const SongProfile = () => {
                   </button>
                 </div>
                 
-                <div className="artist-badge">
-                  <ArtistBadge artist={artist}/>
-                </div>
+                
                   
               </div>
                 
             )}
+            <Link to={`/artist/${artist.id}`} className='link-no-style'>
+              <div className="artist-badge">
+                    <ArtistBadge artist={artist}/>
+              </div>
+            </Link>
+           
         </>
     );
 };
