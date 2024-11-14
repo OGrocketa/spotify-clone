@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { IoIosPlay } from "react-icons/io";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import "./SongLine.css"
+import { Link } from 'react-router-dom';
 
-const SongLine = ({ songData, artistName ,num}) => {
+const SongLine = ({ song, artistName ,num}) => {
     const [hover, setHover] = useState(false);
-    
     return (
         <div className="song-line-container"
         onMouseEnter={() => setHover(true)}
@@ -22,14 +22,16 @@ const SongLine = ({ songData, artistName ,num}) => {
                 </div>
                 
                 <div className='song-title-and-artist-container'>
-                    <p className='song-title'>{songData.title}</p>
+                <Link to={`/song/${song.id}`} className='link-no-style'>
+                    <p className='song-title'>{song.title}</p>
+                </Link>
                     <p className='song-artist'>{artistName}</p>
                 </div>
                 <div className="right-controls">
                     <button className="add-to-playlist-button">
                         <IoMdAddCircleOutline size={22} />
                     </button>
-                    <p>{songData.duration}</p>
+                    <p>{song.duration}</p>
                 </div>
             </div>
         </div>

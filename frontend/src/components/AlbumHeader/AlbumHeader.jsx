@@ -2,7 +2,7 @@ import React from 'react';
 import './AlbumHeader.css';
 import { fetchAlbum } from '../../api';
 import { useState,useEffect } from 'react';
-import { Link,useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const albumLengthObj = (album_length) => {

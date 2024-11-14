@@ -2,6 +2,7 @@ import React from 'react';
 import './SongsList.css';
 import SongLine from '../SongLine/SongLine';
 
+
 const SongsList = ({ songs, artistName, limit }) => {
     const displayedSongs = limit ? songs.slice(0, limit) : songs;
 
@@ -10,7 +11,8 @@ const SongsList = ({ songs, artistName, limit }) => {
             <ul className='songs-ordered-list'>
                 {displayedSongs.map((song, index) => (
                     <li key={index}>
-                        <SongLine songData={song} artistName={artistName} num={index} />
+                        
+                        <SongLine song={song} artistName={artistName} num={index} />
                     </li>
                 ))}
             </ul>

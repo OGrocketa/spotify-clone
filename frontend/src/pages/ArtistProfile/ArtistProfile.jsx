@@ -50,8 +50,8 @@ const ArtistProfile = () => {
             <span className='popular-title'>Discography</span>
             <div className="discography-container">
                 {albums.map((album, index) => (
-                    <Link to={`/album/${album.id}`} className='link-no-style'>
-                        <AlbumCard key={index} albumData={album} />
+                    <Link key={album.id} to={`/album/${album.id}`} className='link-no-style'>
+                        <AlbumCard albumData={album} />
                     </Link>
                 ))}
             </div>
