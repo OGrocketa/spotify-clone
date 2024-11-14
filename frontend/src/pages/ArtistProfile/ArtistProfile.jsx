@@ -4,7 +4,7 @@ import SongsList from "../../components/SongsList/SongsList";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 import AlbumCard from "../../components/AlbumCard/AlbumCard";  // Import AlbumCard
 import { fetchArtist, fetchTopSongsByArtist, fetchAlbumsByartist_id } from "../../api";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ArtistProfile = () => {
     const { artist_id } = useParams();
@@ -50,7 +50,9 @@ const ArtistProfile = () => {
             <span className='popular-title'>Discography</span>
             <div className="discography-container">
                 {albums.map((album, index) => (
-                    <AlbumCard key={index} albumData={album} />
+                    <Link to={`/album/${album.id}`} className='link-no-style'>
+                        <AlbumCard key={index} albumData={album} />
+                    </Link>
                 ))}
             </div>
         </div>
