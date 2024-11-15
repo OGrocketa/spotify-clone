@@ -34,13 +34,33 @@ const MyAudioPlayer = ({song_id}) => {
       id: 1,
     }
   ]
-  
+  const initialState = {
+    volume: 0.8,
+    isMuted: false,
+    isLoop: false,
+    playbackRate: 1.0,
+  };
 
+  const activeUI = {
+    all: true,              // Enable all components
+    playButton: true,       // Show play button
+    playList: "sortable",   // Display playlist as sortable
+    prevNnext: true,        // Show previous and next buttons
+    volume: true,           // Show volume control
+    volumeSlider: true,     // Show volume slider
+    repeatType: true,       // Show repeat options
+    trackTime: true,        // Show track time
+    trackInfo: true,        // Show track info (title, artist, etc.)
+    artwork: true,          // Show artwork/cover image
+    progress: "waveform"    // Display progress as waveform (or "bar" if preferred)
+  };
+  
 
   return (
     <div>
         <AudioPlayer playList={playList}
-                    activeUI={true}/>
+                    activeUI={activeUI}
+                    initialState={initialState}/>
     </div>
 );
 };
