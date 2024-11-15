@@ -4,7 +4,6 @@ import { useEffect,useState } from 'react';
 import { fetchAllArtists } from '../../api';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import { Link } from 'react-router-dom';
-import MyAudioPlayer from '../../AudioPlayer/AudioPlayer';
 
 
 
@@ -38,7 +37,6 @@ const HomePage = () => {
             
           ))}
     </div>
-    <MyAudioPlayer song_id={'adc8dc3c-a016-11ef-a0ab-cc607d4f1785'}/>
    </div>
 
   );

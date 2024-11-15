@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AudioPlayer from 'react-modern-audio-player';
 import { fetchSong,fetchAlbum,fetchArtist } from '../api';
 
-const MyAudioPlayer = ({song_id}) => {
+const PlayerBar = ({song_id}) => {
     const [song, setSong] = useState(null);
     const [artist, setArtist] = useState(null);
     const [album, setAlbum] = useState(null);
@@ -10,7 +10,7 @@ const MyAudioPlayer = ({song_id}) => {
     useEffect(() => {
         if (song_id) {
             fetchSong(song_id).then(song => {
-                setSong(song); // Assume `song` has an `albumId`
+                setSong(song); // Assume `song` has an `albumId`x
                 return fetchAlbum(song.album_id); // Chain the next fetch here
             })
             .then(albumData => {
@@ -28,9 +28,10 @@ const MyAudioPlayer = ({song_id}) => {
 
   const playList = [
     {
-      name: artist.name,
+      name: song.title,
       img: album.cover_url,
       src: song.file_url,
+      writer:artist.name,
       id: 1,
     }
   ]
@@ -44,25 +45,36 @@ const MyAudioPlayer = ({song_id}) => {
   const activeUI = {
     all: true,              // Enable all components
     playButton: true,       // Show play button
-    playList: "sortable",   // Display playlist as sortable
-    prevNnext: true,        // Show previous and next buttons
-    volume: true,           // Show volume control
-    volumeSlider: true,     // Show volume slider
-    repeatType: true,       // Show repeat options
-    trackTime: true,        // Show track time
-    trackInfo: true,        // Show track info (title, artist, etc.)
-    artwork: true,          // Show artwork/cover image
-    progress: "waveform"    // Display progress as waveform (or "bar" if preferred)
+    playList: "unSortable",   // Display playlist as sortable
+    prevNnext: true,        
+    volume: true,           
+    volumeSlider: true,     
+    repeatType: true,       
+    trackTime: true,       
+    trackInfo: true,       
+    artwork: true,     
+    progress: "bar"    
   };
+
+  const placement = {
+    player: "bottom",
+    playList: "right",
+    interface: "center",
+    volumeSlider: "top",
+  };
+  
   
 
   return (
     <div>
         <AudioPlayer playList={playList}
                     activeUI={activeUI}
-                    initialState={initialState}/>
+                    initialState={initialState}
+                    placement={placement}/>
+                    
+                    
     </div>
 );
 };
 
-export default MyAudioPlayer;
+export default PlayerBar;

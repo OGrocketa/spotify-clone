@@ -4,9 +4,9 @@ import AlbumProfile from './pages/AlbumProfile/AlbumProfile.jsx'
 import SongProfile from './pages/SongProfile/SongProfile.jsx'
 import ArtistProfile from './pages/ArtistProfile/ArtistProfile.jsx'
 import HomePage from './pages/HomePage/HomePage.jsx';
+import PlayerBar from './AudioPlayer/AudioPlayer.jsx';
 
-
-
+const song_id = 'adc8dc3c-a016-11ef-a0ab-cc607d4f1785';
 function App() {
   
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="/song/:song_id" element={<SongProfile />} />
         </Routes>
       </BrowserRouter>
+       <PlayerBar song_id={song_id}/>
     </>
   );
 }
