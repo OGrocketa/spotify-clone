@@ -14,7 +14,7 @@ const AlbumProfile = () => {
   const {album_id} = useParams();
   const [album, setAlbum] = useState(null);
   const [artist, setArtist] = useState(null);
-  
+  const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
