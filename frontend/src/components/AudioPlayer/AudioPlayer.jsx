@@ -44,14 +44,21 @@ const MusicPlayer = () =>{
       
 
     useEffect(() => {
-        fetchSong(song_id).then((song) => {
-            setPlayerData({
-                id: song.id,
-                song_url: song.file_url,
-                title: song.title,
-            });
-        });
-      }, [song_id, setPlayerData]); // Include dependencies
+        const fetchData = async () =>{
+            try{
+                const song_data = await fetchSong(song_id);
+                setPlayerData({
+                    id: song_data.id,
+                    title: song_data.title,
+                    song_url: song_data.file_url,
+                })
+            }catch(error){
+                console.error("Error fetching data", error);
+            }
+        }; 
+        fetchData();
+       
+      }, [song_id, setPlayerData]); 
       
 
       return (
@@ -59,13 +66,13 @@ const MusicPlayer = () =>{
           <h2>{title || "Loading song..."}</h2>
           <div>
             <button
-              onClick={setPlay} // Use store's toggle function
+              onClick={setPlay} 
               style={{ padding: "10px 20px", fontSize: "16px" }}
             >
               {isPlaying ? "Pause" : "Play"}
             </button>
           </div>
-          <audio ref={audioRef} src={'https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/mac+miller/albums/Swimming/Self+Care.mp3'}/>
+          <audio ref={audioRef} src={son}/>
         </div>
       );
       
