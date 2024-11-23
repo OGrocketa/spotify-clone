@@ -5,13 +5,13 @@ import { fetchSong } from '../../api';
 
 const usePlayer = create((set) => ({
     id: null,
-    song_url: "",
+    file_url: "",
     title: "",
     isPlaying: false,
     setPlayerData: (song_data) => set({
         id: song_data.id,
         title: song_data.title,
-        song_url: song_data.file_url
+        file_url: song_data.file_url,
     }),
 
     setPlay: () => set((state) => ({isPlaying: !state.isPlaying})),
@@ -19,11 +19,11 @@ const usePlayer = create((set) => ({
 }));
 
 const MusicPlayer = () =>{
-    const audioRef = useRef(null);
-    const song_id = '0e30dd2a-9876-11ef-999d-512ce8086d0d';
+    const audioRef = useRef();
+    const song_id = '0e3098e2-9876-11ef-999d-512ce8086d0d';
     const{
         id,
-        song_url,
+        file_url,
         title,
         isPlaying,
         setPlayerData,
@@ -33,7 +33,7 @@ const MusicPlayer = () =>{
     
 
     useEffect(() => {
-        if (audioRef.current) {
+        if (audioRef.current && file_url) {
           if (isPlaying) {
             audioRef.current.play();
           } else {
@@ -50,15 +50,16 @@ const MusicPlayer = () =>{
                 setPlayerData({
                     id: song_data.id,
                     title: song_data.title,
-                    song_url: song_data.file_url,
+                    file_url: song_data.file_url,
                 })
+
             }catch(error){
                 console.error("Error fetching data", error);
             }
         }; 
         fetchData();
        
-      }, [song_id, setPlayerData]); 
+      }, [song_id]); 
       
 
       return (
@@ -72,7 +73,7 @@ const MusicPlayer = () =>{
               {isPlaying ? "Pause" : "Play"}
             </button>
           </div>
-          <audio ref={audioRef} src={son}/>
+          <audio ref={audioRef} src={file_url}/>
         </div>
       );
       
