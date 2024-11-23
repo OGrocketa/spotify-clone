@@ -3,33 +3,15 @@ import "./ArtistProfile.css";
 import SongsList from "../../components/SongsList/SongsList";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 import AlbumCard from "../../components/AlbumCard/AlbumCard";  // Import AlbumCard
-import { fetchArtist, fetchTopSongsByArtist, fetchAlbumsByartist_id } from "../../api";
+
 import { Link, useParams } from 'react-router-dom';
+import useArtist from '../../hooks/useArtist';
 
 const ArtistProfile = () => {
     const { artist_id } = useParams();
-    const [artist, setArtist] = useState(null);
-    const [songs, setSongs] = useState([]);
-    const [albums, setAlbums] = useState([]);  // State for albums
+    const {artist, songs, albums,loading} = useArtist(artist_id);
 
-    useEffect(() => {
-        const loadArtistData = async () => {
-            try {
-                const fetchedArtist = await fetchArtist(artist_id);
-                setArtist(fetchedArtist);
-                const fetchedSongs = await fetchTopSongsByArtist(artist_id);
-                setSongs(fetchedSongs);
-                const fetchedAlbums = await fetchAlbumsByartist_id(artist_id);  // Fetch albums
-                setAlbums(fetchedAlbums);
-            } catch (error) {
-                console.error('Failed to load artist data', error);
-            }
-        };
-
-        loadArtistData();
-    }, [artist_id]);
-
-    if (!artist) {
+    if (loading) {
         return <div>Loading...</div>;
     }
 

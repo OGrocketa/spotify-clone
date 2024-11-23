@@ -38,19 +38,7 @@ const formatAlbumLength = (album_length) => {
 };
 
 const AlbumHeader = ({ album, artist }) => {
-
-    const [fetchedAlbum, setFetchedAlbum] = useState(null);
     
-    useEffect(() => {
-        if (!album.cover_url && album.album_id) {
-            fetchAlbum(album.album_id)
-                .then(data => {
-                    setFetchedAlbum(data);
-                })
-                .catch(error => console.error('Failed to fetch album', error));
-        }
-    }, [album]);
-
     const releaseDate = new Date(album.release_date);
     const releaseYear = releaseDate.getFullYear();
     const album_length = album.album_length ? album.album_length : album.song_length;
@@ -60,7 +48,7 @@ const AlbumHeader = ({ album, artist }) => {
 
     return (
         <div className='album-header'>
-            <img className="album-cover" src={(fetchedAlbum || album).cover_url} alt="" />
+            <img className="album-cover" src={album.cover_url} alt="" />
 
             <div className='album-info'>
                 <div className='album-info-main'>
