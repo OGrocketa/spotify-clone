@@ -1,15 +1,34 @@
 .music-player-container{
+    display: flex;
+    flex-direction: row;
     width: 100%;
     text-align: center;
-    justify-content: center;
+    align-items: flex-start;
     padding: 20px;
     bottom: 0;
     position: fixed;
+    background:fixed;
+    background-color: black;
 }
 
 .play-pause-button{
-    
     background: none;
     border: none;
     color: white;
+    cursor: pointer;
+}
+
+
+
+
+.song-info-written{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.song-info img{
+    width: 10%;
+    height: 10%;
+    border-radius: 10%;
 }

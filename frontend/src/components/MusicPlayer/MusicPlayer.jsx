@@ -14,10 +14,12 @@ const MusicPlayer = () =>{
         file_url,
         title,
         isPlaying,
+        name,
+        cover_url,
         setPlayerData,
         setPlay,
     } = usePlayer();
-
+    
     usePlayerFetchSong(song_id);
     
 
@@ -33,12 +35,22 @@ const MusicPlayer = () =>{
 
       return (
         <div className='music-player-container'>
-          <h2>{title || "Loading song..."}</h2>
-          <div>
-            <button onClick={setPlay} className='play-pause-button'>
-              {isPlaying ? <FaCirclePause size={30}/> :  <FaCirclePlay size={30}/>}
-            </button>
-          </div>
+         
+            <div className='song-info'>
+              <img src={cover_url} alt="Album Cover" />
+              <div className="song-info-written">
+                <p>{title}</p>
+                <p>{name}</p>
+              </div>
+            </div>
+
+            <div className='music-controls'>
+              <button onClick={setPlay} className='play-pause-button'>
+                {isPlaying ? <FaCirclePause size={30}/> :  <FaCirclePlay size={30}/>}
+              </button>
+            </div>
+           
+          
           <audio ref={audioRef} src={file_url}/>
         </div>
       );
