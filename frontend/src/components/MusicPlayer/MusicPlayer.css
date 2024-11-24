@@ -1,0 +1,15 @@
+.music-player-container{
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+    bottom: 0;
+    position: fixed;
+}
+
+.play-pause-button{
+    
+    background: none;
+    border: none;
+    color: white;
+}

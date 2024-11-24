@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import usePlayer from '../../hooks/usePlayer';
 import usePlayerFetchSong from '../../hooks/usePlayerFetchSong';
+import './MusicPlayer.css'
+
+import { FaCirclePause,FaCirclePlay } from "react-icons/fa6";
+
 
 const MusicPlayer = () =>{
     const audioRef = useRef();
@@ -28,14 +32,11 @@ const MusicPlayer = () =>{
       }, [isPlaying]);
 
       return (
-        <div style={{ textAlign: "center", padding: "20px" }}>
+        <div className='music-player-container'>
           <h2>{title || "Loading song..."}</h2>
           <div>
-            <button
-              onClick={setPlay} 
-              style={{ padding: "10px 20px", fontSize: "16px" }}
-            >
-              {isPlaying ? "Pause" : "Play"}
+            <button onClick={setPlay} className='play-pause-button'>
+              {isPlaying ? <FaCirclePause size={30}/> :  <FaCirclePlay size={30}/>}
             </button>
           </div>
           <audio ref={audioRef} src={file_url}/>
