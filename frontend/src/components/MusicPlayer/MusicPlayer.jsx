@@ -36,20 +36,23 @@ const MusicPlayer = () =>{
       return (
         <div className='music-player-container'>
          
-            <div className='song-info'>
+            <div className='player-song-info'>
               <img src={cover_url} alt="Album Cover" />
-              <div className="song-info-written">
+              <div className="player-song-info-written">
                 <p>{title}</p>
                 <p>{name}</p>
               </div>
             </div>
 
-            <div className='music-controls'>
-              <button onClick={setPlay} className='play-pause-button'>
+            <div className='music-main-controls'>
+              <button onClick={setPlay} className='player-play-pause-button'>
                 {isPlaying ? <FaCirclePause size={30}/> :  <FaCirclePlay size={30}/>}
               </button>
             </div>
-           
+
+           <div className='player-music-add-controls'>
+            
+           </div>
           
           <audio ref={audioRef} src={file_url}/>
         </div>
