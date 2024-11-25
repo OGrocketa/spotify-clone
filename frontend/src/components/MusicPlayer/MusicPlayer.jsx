@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import usePlayer from '../../hooks/usePlayer';
 import usePlayerFetchSong from '../../hooks/usePlayerFetchSong';
 import './MusicPlayer.css'
-
 import { FaCirclePause,FaCirclePlay } from "react-icons/fa6";
 
 
 const MusicPlayer = () =>{
     const audioRef = useRef();
-    const song_id = '0e3098e2-9876-11ef-999d-512ce8086d0d';
+    
     const{
         id,
         file_url,
@@ -19,8 +18,12 @@ const MusicPlayer = () =>{
         setPlayerData,
         setPlay,
     } = usePlayer();
+
+    const handlePlaySong = (song_id)=>{
+      usePlayerFetchSong(song_id);
+    }
     
-    usePlayerFetchSong(song_id);
+    
     
 
     useEffect(() => {
@@ -38,9 +41,9 @@ const MusicPlayer = () =>{
          
             <div className='player-song-info'>
               <img src={cover_url} alt="Album Cover" />
-              <div className="player-song-info-written">
-                <p>{title}</p>
-                <p>{name}</p>
+              <div className="song-title-and-artist-container">
+                <span className='song-title'>{title}</span>
+                <span className='song-artist'>{name}</span>
               </div>
             </div>
 

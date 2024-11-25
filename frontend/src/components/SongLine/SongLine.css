@@ -38,6 +38,10 @@
 
 }
 
+.index-play-container button{
+    cursor: pointer;
+}
+
 .song-index, .song-info button {
     color: white;
     background: none;
@@ -102,6 +106,7 @@
 .add-to-playlist-button:hover {
     color: hsl(141, 73%, 42%);
     transform: scale(1.1);  /* Makes the button 10% larger */
+    cursor: pointer;
 }
 
 

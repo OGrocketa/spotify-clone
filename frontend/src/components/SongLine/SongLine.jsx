@@ -3,9 +3,17 @@ import { IoIosPlay } from "react-icons/io";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import "./SongLine.css"
 import { Link } from 'react-router-dom';
+import usePlayerFetchSong from '../../hooks/usePlayerFetchSong';
 
 const SongLine = ({ song, artistName ,num}) => {
     const [hover, setHover] = useState(false);
+
+    const fetchAndSetSong = usePlayerFetchSong();
+
+    const handlePlay = () => {
+        fetchAndSetSong(song.id); 
+    };
+
     return (
         <div className="song-line-container"
         onMouseEnter={() => setHover(true)}
@@ -15,7 +23,7 @@ const SongLine = ({ song, artistName ,num}) => {
             <div className="song-info">
                 <div className='index-play-container'>
                     {hover ? 
-                        (<button > <IoIosPlay size={20}/> </button>)
+                        (<button onClick={handlePlay}>  <IoIosPlay size={20} /> </button>)
                         :
                         (<div className="song-index">{num + 1}</div>)
                     }
@@ -26,6 +34,7 @@ const SongLine = ({ song, artistName ,num}) => {
                     <p className='song-title'>{song.title}</p>
                 </Link>
                     <p className='song-artist'>{artistName}</p>
+                    
                 </div>
                 <div className="right-controls">
                     <button className="add-to-playlist-button">

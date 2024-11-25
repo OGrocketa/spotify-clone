@@ -5,7 +5,7 @@ const usePlayer = create((set) => ({
     file_url: "",
     title: "",
     isPlaying: false,
-    artist: "",
+    name: "",
     cover_url: "",
     setPlayerData: (song_data) =>
         set({
@@ -13,7 +13,8 @@ const usePlayer = create((set) => ({
             title: song_data.title,
             file_url: song_data.file_url,
             cover_url: song_data.cover_url,
-            name: song_data.name
+            name: song_data.name,
+            isPlaying: true
         }),
 
     setPlay: () => set((state) => ({ isPlaying: !state.isPlaying })),

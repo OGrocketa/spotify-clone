@@ -1,33 +1,30 @@
-import { useEffect } from 'react';
-import { fetchSong, fetchAlbum,fetchArtist } from '../api';
+import { useCallback } from 'react';
+import { fetchSong, fetchAlbum, fetchArtist } from '../api';
 import usePlayer from './usePlayer';
 
-const usePlayerFetchSong = (song_id) => {
+const usePlayerFetchSong = () => {
     const { setPlayerData } = usePlayer();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const song_data = await fetchSong(song_id);
-                const album_data = await fetchAlbum(song_data.album_id);
-                const artist_data = await fetchArtist(album_data.artist_id);
+    const fetchAndSetSong = useCallback(async (song_id) => {
+        try {
+            const songData = await fetchSong(song_id);
+            const albumData = await fetchAlbum(songData.album_id);
+            const artistData = await fetchArtist(albumData.artist_id);
 
-                setPlayerData({
-                    id: song_data.id,
-                    title: song_data.title,
-                    file_url: song_data.file_url,
-                    cover_url: album_data.cover_url,
-                    name: artist_data.name,
-                });
-            } catch (error) {
-                console.error("Error fetching data", error);
-            }
-        };
-
-        if (song_id) {
-            fetchData();
+            
+            setPlayerData({
+                id: songData.id,
+                title: songData.title,
+                file_url: songData.file_url,
+                cover_url: albumData.cover_url,
+                name: artistData.name,
+            });
+        } catch (error) {
+            console.error('Error fetching song data:', error);
         }
-    }, [song_id, setPlayerData]);
+    }, [setPlayerData]);
+
+    return fetchAndSetSong; 
 };
 
 export default usePlayerFetchSong;
