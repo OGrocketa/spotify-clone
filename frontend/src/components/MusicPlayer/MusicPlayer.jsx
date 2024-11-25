@@ -3,13 +3,14 @@ import usePlayer from '../../hooks/usePlayer';
 import usePlayerFetchSong from '../../hooks/usePlayerFetchSong';
 import './MusicPlayer.css'
 import { FaCirclePause,FaCirclePlay } from "react-icons/fa6";
-
+import usePlayNewSong from '../../hooks/usePlayNewSong';
 
 const MusicPlayer = () =>{
   const audioRef = useRef();
   
   const{
-      id,
+      ids,
+      curId,
       file_url,
       title,
       isPlaying,
@@ -23,17 +24,10 @@ const MusicPlayer = () =>{
     usePlayerFetchSong(song_id);
   }
   
-  useEffect(() => {
-    if (audioRef.current && file_url) {
-        audioRef.current.pause(); // Pause current playback
-        audioRef.current.load(); // Reload the audio element with the new source
-        if (isPlaying) {
-            audioRef.current.play(); // Start playback for the new song
-        }
-    }
-  }, [file_url]); 
+  //Handle playback when song changes
+  usePlayNewSong(audioRef, file_url, isPlaying);
   
-
+  //Handle Play Pause
   useEffect(() => {
       if (audioRef.current && file_url) {
         if (isPlaying) {

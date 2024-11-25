@@ -13,7 +13,7 @@ const usePlayerFetchSong = () => {
 
             
             setPlayerData({
-                id: songData.id,
+                curId: songData.id,
                 title: songData.title,
                 file_url: songData.file_url,
                 cover_url: albumData.cover_url,
