@@ -48,7 +48,7 @@ const MusicPlayer = () =>{
       <div className='music-player-container'>
         
           <div className='player-song-info'>
-            <img src={cover_url} alt="Album Cover" />
+            <img src={cover_url} alt="" />
             <div className="song-title-and-artist-container">
               <span className='song-title'>{title}</span>
               <span className='song-artist'>{name}</span>
