@@ -4,14 +4,21 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import "./SongLine.css"
 import { Link } from 'react-router-dom';
 import usePlayerFetchSong from '../../hooks/usePlayerFetchSong';
+import usePlayerFetchPlaylist from '../../hooks/usePlayerFetchPlaylist';
 
-const SongLine = ({ song, artistName ,num}) => {
+const SongLine = ({ song, artistName ,num,songs}) => {
     const [hover, setHover] = useState(false);
 
     const fetchAndSetSong = usePlayerFetchSong();
+    const fetchAndSetPlaylist = usePlayerFetchPlaylist();
+
+    const curIndex = songs.findIndex((someSong) => someSong.id === song.id);
+    const filteredSongs = songs.slice(curIndex).map((someSong) => someSong.id);
+
 
     const handlePlay = () => {
-        fetchAndSetSong(song.id); 
+        fetchAndSetPlaylist(filteredSongs);
+        fetchAndSetSong(filteredSongs[0]); 
     };
 
     return (

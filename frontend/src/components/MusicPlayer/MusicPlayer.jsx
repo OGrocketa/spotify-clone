@@ -21,10 +21,8 @@ const MusicPlayer = () =>{
       setPlay,
   } = usePlayer();
 
-  const handlePlaySong = (song_id)=>{
-    usePlayerFetchSong(song_id);
-  }
-  
+  const fetchAndSetSong = usePlayerFetchSong(); 
+
   //Handle playback when song changes
   usePlayNewSong(audioRef, file_url, isPlaying);
 
@@ -39,14 +37,17 @@ const MusicPlayer = () =>{
       }
     }, [isPlaying]);
 
-  const playNext = () =>{
-    const curIndex = ids.findIndex((index) => curId === index);
-    if(ids[curIndex + 1]){
-      const nextSongId = ids[curIndex + 1];
-        handlePlaySong(nextSongId);
+    
+    const playNext = () =>{
       
-    }
-  };
+      const curIndex = ids.findIndex((index) => curId == index);
+      console.log(curId);
+      if(ids[curIndex + 1]){
+        const nextSongId = ids[curIndex + 1];
+        console.log(nextSongId);
+          fetchAndSetSong(nextSongId);
+      }
+    };
 
     return (
       <div className='music-player-container'>

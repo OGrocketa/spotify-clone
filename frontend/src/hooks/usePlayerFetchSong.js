@@ -11,13 +11,14 @@ const usePlayerFetchSong = () => {
             const albumData = await fetchAlbum(songData.album_id);
             const artistData = await fetchArtist(albumData.artist_id);
             
-            setPlayerSongData({
+            const player_song_data = {
                 curId: songData.id,
                 title: songData.title,
                 file_url: songData.file_url,
                 cover_url: albumData.cover_url,
                 name: artistData.name,
-            });
+            }
+            setPlayerSongData(player_song_data);
 
         } catch (error) {
             console.error('Error fetching song data:', error);

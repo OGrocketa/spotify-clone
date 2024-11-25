@@ -12,7 +12,7 @@ const SongsList = ({ songs, artistName, limit }) => {
                 {displayedSongs.map((song, index) => (
                     <li key={index}>
                         
-                        <SongLine song={song} artistName={artistName} num={index} />
+                        <SongLine song={song} artistName={artistName} num={index} songs={songs}/>
                     </li>
                 ))}
             </ul>

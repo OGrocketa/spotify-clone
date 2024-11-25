@@ -5,13 +5,10 @@ import usePlayer from './usePlayer';
 const usePlayerFetchPlaylist = () => {
     const { setPlayerIds } = usePlayer();
 
-    const fetchAndSetPlaylist = useCallback(async (songsList) => {
+    const fetchAndSetPlaylist = useCallback(async (songsIds) => {
         try {
-            const songsIds = songsList.map((song) => song.id);
-
-            setPlayerIds({
-                ids: songsIds,
-            });
+            
+            setPlayerIds(songsIds);
 
         } catch (error) {
             console.error('Error fetching song data:', error);
