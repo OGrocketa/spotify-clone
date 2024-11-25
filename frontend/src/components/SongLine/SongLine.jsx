@@ -13,12 +13,12 @@ const SongLine = ({ song, artistName ,num,songs}) => {
     const fetchAndSetPlaylist = usePlayerFetchPlaylist();
 
     const curIndex = songs.findIndex((someSong) => someSong.id === song.id);
-    const filteredSongs = songs.slice(curIndex).map((someSong) => someSong.id);
+    const filteredSongs = songs.map((someSong) => someSong.id);
 
 
     const handlePlay = () => {
         fetchAndSetPlaylist(filteredSongs);
-        fetchAndSetSong(filteredSongs[0]); 
+        fetchAndSetSong(filteredSongs[curIndex]); 
     };
 
     return (
