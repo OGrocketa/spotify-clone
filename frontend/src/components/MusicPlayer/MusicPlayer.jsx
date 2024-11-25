@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import usePlayer from '../../hooks/usePlayer';
 import usePlayerFetchSong from '../../hooks/usePlayerFetchSong';
 import './MusicPlayer.css'
-import { FaCirclePause,FaCirclePlay,FaForwardStep } from "react-icons/fa6";
+import { FaCirclePause,FaCirclePlay,FaForwardStep,FaBackwardStep } from "react-icons/fa6";
 import usePlayNewSong from '../../hooks/usePlayNewSong';
 
 const MusicPlayer = () =>{
@@ -48,7 +48,11 @@ const MusicPlayer = () =>{
     };
 
     const playPrev = ()=>{
-
+      const curIndex = ids.findIndex((index) => curId == index);
+      if(ids[curIndex - 1]){
+        const prevSongId = ids[curIndex - 1];
+          fetchAndSetSong(prevSongId);
+      }
     };
 
     return (
@@ -64,7 +68,7 @@ const MusicPlayer = () =>{
 
           <div className='music-main-controls'>
             <div className='music-main-controls-buttons'>
-              <button onClick={playPrev}> CHUJ!</button>
+              <button onClick={playPrev} className='player-fast-forward'> <FaBackwardStep size={20}/></button>
               <button onClick={setPlay} className='player-play-pause-button'>
                 {isPlaying ? <FaCirclePause size={30}/> :  <FaCirclePlay size={30}/>}
               </button>
