@@ -8,16 +8,19 @@ const usePlayer = create((set) => ({
     isPlaying: false,
     name: "",
     cover_url: "",
-    setPlayerData: (song_data) =>
+    setPlayerIds: (ids_data) =>
         set({
-            ids:song_data.ids,
-            curId: song_data.id,
+            ids:ids_data,
+        }),
+
+    setPlayerSongData:(song_data) => set({
+        curId: song_data.id,
             title: song_data.title,
             file_url: song_data.file_url,
             cover_url: song_data.cover_url,
             name: song_data.name,
-            isPlaying: true
-        }),
+            isPlaying: true,
+    }),
 
     setPlay: () => set((state) => ({ isPlaying: !state.isPlaying })),
 }));

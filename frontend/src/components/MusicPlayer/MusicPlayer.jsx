@@ -16,7 +16,8 @@ const MusicPlayer = () =>{
       isPlaying,
       name,
       cover_url,
-      setPlayerData,
+      setPlayerIds,
+      setPlayerSongData,
       setPlay,
   } = usePlayer();
 
@@ -26,7 +27,7 @@ const MusicPlayer = () =>{
   
   //Handle playback when song changes
   usePlayNewSong(audioRef, file_url, isPlaying);
-  
+
   //Handle Play Pause
   useEffect(() => {
       if (audioRef.current && file_url) {
@@ -37,6 +38,15 @@ const MusicPlayer = () =>{
         }
       }
     }, [isPlaying]);
+
+  const playNext = () =>{
+    const curIndex = ids.findIndex((index) => curId === index);
+    if(ids[curIndex + 1]){
+      const nextSongId = ids[curIndex + 1];
+        handlePlaySong(nextSongId);
+      
+    }
+  };
 
     return (
       <div className='music-player-container'>
@@ -53,6 +63,7 @@ const MusicPlayer = () =>{
             <button onClick={setPlay} className='player-play-pause-button'>
               {isPlaying ? <FaCirclePause size={30}/> :  <FaCirclePlay size={30}/>}
             </button>
+            <button onClick={playNext}>CHUJ!</button>
           </div>
 
           <div className='player-music-add-controls'>
