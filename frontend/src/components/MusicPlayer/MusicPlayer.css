@@ -43,9 +43,14 @@
 
 .music-main-controls{
     flex: 1;
-    display: flex;
     flex-direction: column;
+}
+
+.music-main-controls-buttons{
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
     
 }
 
@@ -56,6 +61,16 @@
     cursor: pointer;
     width: fit-content;
     padding: 10px;
+}
+
+.player-fast-forward{
+    background: none;
+    color: hsl(0, 0%, 70%);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
 .player-music-add-controls{
