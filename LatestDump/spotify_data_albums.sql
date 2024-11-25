@@ -44,7 +44,7 @@ CREATE TABLE `albums` (
 
 LOCK TABLES `albums` WRITE;
 /*!40000 ALTER TABLE `albums` DISABLE KEYS */;
-INSERT INTO `albums` VALUES ('1e4fbdec-6df7-4e96-be84-7c4b113230b8','99770812-4218-46cd-86d1-e65d06a7ddc1','Circles','© 2020 Warner Records Inc.\n℗ 2020 Warner Records Inc.','00:44:44',12,'2017-01-17','https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/mac+miller/albums/Circles/cover.jpg','Album'),('1f693a7f-6054-4ff6-a8a9-bd8341274c36','99770812-4218-46cd-86d1-e65d06a7ddc1','Swimming','© 2018 Warner Records Inc.\n℗ 2018 Warner Records Inc.','00:58:39',13,'2018-08-03','https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/mac+miller/albums/Swimming/cover.jpg','Album'),('348661f1-cea9-4818-8491-be5252a84038','f0100c9a-a10c-11ef-9ed7-c645075491da','The Marshall Matters LP','© 2001 UMG Recordings, Inc.℗ 2001 UMG Recordings, Inc.','01:33:41',22,'2001-08-20','https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/eminem/albums/The+Marshall+Mathers+LP/cover.jpg','Album'),('c5937424-a10d-11ef-9ed7-c645075491da','f0100c9a-a10c-11ef-9ed7-c645075491da','Music To Be Murdered By','© 2020 Marshall B. Mathers III\n℗ 2020 Marshall B. Mathers III','01:04:00',20,'2020-01-17','https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/eminem/albums/Music+to+Be+Murdered+By/cover.jpg','Album');
+INSERT INTO `albums` VALUES ('1e4fbdec-6df7-4e96-be84-7c4b113230b8','99770812-4218-46cd-86d1-e65d06a7ddc1','Circles','© 2020 Warner Records Inc.\n℗ 2020 Warner Records Inc.','00:44:44',12,'2017-01-17','https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/mac+miller/albums/Circles/cover.jpg','Album'),('1f693a7f-6054-4ff6-a8a9-bd8341274c36','99770812-4218-46cd-86d1-e65d06a7ddc1','Swimming','© 2018 Warner Records Inc.\n℗ 2018 Warner Records Inc.','00:58:39',13,'2018-08-03','https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/mac+miller/albums/Swimming/cover.jpg','Album'),('348661f1-cea9-4818-8491-be5252a84038','f0100c9a-a10c-11ef-9ed7-c645075491da','The Marshall Matters LP','© 2001 UMG Recordings, Inc.℗ 2001 UMG Recordings, Inc.','01:33:41',22,'2001-08-20','https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/eminem/albums/The+Marshall+Mathers+LP/cover.jpg','Album'),('c5937424-a10d-11ef-9ed7-c645075491da','f0100c9a-a10c-11ef-9ed7-c645075491da','Music To Be Murdered By Deluxe Version','© 2020 Marshall B. Mathers III\n℗ 2020 Marshall B. Mathers III','01:04:00',20,'2020-01-17','https://spotify-clone1.s3.eu-north-1.amazonaws.com/artists/eminem/albums/Music+to+Be+Murdered+By/cover.jpg','Album');
 /*!40000 ALTER TABLE `albums` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-16 18:10:41
+-- Dump completed on 2024-11-25 20:40:33
