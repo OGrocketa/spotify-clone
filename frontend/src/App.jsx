@@ -11,17 +11,26 @@ const song_id = 'adc8dc3c-a016-11ef-a0ab-cc607d4f1785';
 function App() {
   
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<HomePage/>}/>
-          <Route path="/artist/:artist_id" element={<ArtistProfile />} />
-          <Route path="/album/:album_id" element={<AlbumProfile />} />
-          <Route path="/song/:song_id" element={<SongProfile />} />
-        </Routes>
-      </BrowserRouter>
-      <MusicPlayer/>
-    </>
+    <div className='spotify-clone'>
+      <div className='main_window'>
+        <div className='main-window-info'>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<HomePage/>}/>
+              <Route path="/artist/:artist_id" element={<ArtistProfile />} />
+              <Route path="/album/:album_id" element={<AlbumProfile />} />
+              <Route path="/song/:song_id" element={<SongProfile />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+        <div className='main-window-music-player'>
+          <MusicPlayer/>
+        </div>
+        
+      </div>
+      
+    </div>
+   
   );
 }
 

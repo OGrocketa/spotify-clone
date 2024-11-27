@@ -23,7 +23,7 @@ const SongProfile = () => {
     return (
         <>
             <AlbumHeader artist={artist} album={song} />
-            <PlayAlbumLine />
+            <PlayAlbumLine songs= {[song]} />
             {song.lyrics && (
               <div className="song-profile-body-container">
                 <div className="lyrics">

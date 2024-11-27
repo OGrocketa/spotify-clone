@@ -9,3 +9,10 @@ body{
   color: inherit; /* Inherits the color from the parent element */
 }
 
+.main_window {
+  padding-bottom: 80px;
+}
+
+
+
+
