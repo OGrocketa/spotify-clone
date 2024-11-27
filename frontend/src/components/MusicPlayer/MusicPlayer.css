@@ -44,6 +44,7 @@
 .music-main-controls{
     flex: 1;
     flex-direction: column;
+    border: 2px solid red;
 }
 
 .music-main-controls-buttons{

@@ -4,6 +4,8 @@ import usePlayerFetchSong from '../../hooks/usePlayerFetchSong';
 import './MusicPlayer.css'
 import { FaCirclePause,FaCirclePlay,FaForwardStep,FaBackwardStep } from "react-icons/fa6";
 import usePlayNewSong from '../../hooks/usePlayNewSong';
+import MusicSlider from '../Slider/MusicSlider';
+
 
 const MusicPlayer = () =>{
   const audioRef = useRef();
@@ -55,6 +57,10 @@ const MusicPlayer = () =>{
       }
     };
 
+    // useEffect(()=>{
+      
+    // },[audioRef.current.currentTime()]);
+
     return (
       <div className='music-player-container'>
         
@@ -76,7 +82,7 @@ const MusicPlayer = () =>{
                 <FaForwardStep size={20}/> 
               </button>
             </div>
-            
+            <MusicSlider/>
           </div>
 
           <div className='player-music-add-controls'>
