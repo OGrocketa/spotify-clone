@@ -53,11 +53,17 @@
       };
 
       const playPrev = ()=>{
-        const curIndex = ids.findIndex((index) => curId == index);
-        if(ids[curIndex - 1]){
-          const prevSongId = ids[curIndex - 1];
-            fetchAndSetSong(prevSongId);
+        if(audioRef.current.currentTime > 3){
+          audioRef.current.currentTime = 0;
+          setCurrentTime(0);
+        }else{
+          const curIndex = ids.findIndex((index) => curId == index);
+          if(ids[curIndex - 1]){
+            const prevSongId = ids[curIndex - 1];
+              fetchAndSetSong(prevSongId);
+          }
         }
+       
       };
 
       const handleTimeUpdate = () => {
