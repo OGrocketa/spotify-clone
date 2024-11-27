@@ -79,3 +79,8 @@
     flex:1;
     border: solid red 2px;
 }
+
+.music-slider-container{
+    display: flex;
+    flex-direction: row;
+}
