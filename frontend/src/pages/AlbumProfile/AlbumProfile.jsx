@@ -32,7 +32,7 @@ const AlbumProfile = () => {
           <AlbumHeader album={album} artist={artist} />
 
           <div className='play-album'>
-              <PlayAlbumLine />
+              <PlayAlbumLine songs={songs} />
           </div>
 
           <div className='song-list-header'>

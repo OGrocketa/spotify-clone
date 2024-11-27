@@ -24,7 +24,7 @@ const ArtistProfile = () => {
             <div className="artist-header" style={artistHeaderBackgroundImg}>
                 <h1>{artist.name}</h1>
             </div>
-            <PlayAlbumLine/>
+            <PlayAlbumLine songs={songs}/>
             <div className="popular-songs-container">
             <span className="popular-title">Popular</span>
                 <SongsList songs={songs} artistName={artist.name} limit={5}/>
