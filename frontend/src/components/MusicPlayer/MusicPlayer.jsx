@@ -23,6 +23,9 @@ const MusicPlayer = () =>{
       setPlay,
   } = usePlayer();
 
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration, setDuration] = useState(0);
+
   const fetchAndSetSong = usePlayerFetchSong(); 
 
   //Handle playback when song changes
@@ -57,9 +60,21 @@ const MusicPlayer = () =>{
       }
     };
 
-    // useEffect(()=>{
-      
-    // },[audioRef.current.currentTime()]);
+    const handleTimeUpdate = () => {
+      setCurrentTime(audioRef.current.currentTime);
+    };
+
+    const handleLoadSong = () => {
+      setDuration(audioRef.current.duration);
+    };
+
+    const handleUserSliderChange = (value) =>{
+      const newTime = value[0];
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+
+    }
+  
 
     return (
       <div className='music-player-container'>
@@ -82,14 +97,14 @@ const MusicPlayer = () =>{
                 <FaForwardStep size={20}/> 
               </button>
             </div>
-            <MusicSlider/>
+            <MusicSlider currentTime={currentTime} duration={duration} onValueCommit={handleTimeUpdate}/>
           </div>
 
           <div className='player-music-add-controls'>
           
           </div>
         
-        <audio ref={audioRef} src={file_url}/>
+        <audio ref={audioRef} src={file_url} onLoadedMetadata={handleLoadSong} onTimeUpdate={handleTimeUpdate}/>
       </div>
     );
     
