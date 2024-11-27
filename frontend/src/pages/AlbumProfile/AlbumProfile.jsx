@@ -4,7 +4,6 @@ import SongsList from '../../components/SongsList/SongsList';
 import { LuClock3 } from "react-icons/lu";
 import PlayAlbumLine from '../../components/PlayAlbumLine/PlayAlbumLine';
 import AlbumHeader from '../../components/AlbumHeader/AlbumHeader';
-import { fetchAlbum,fetchArtist,fetchSongsFromAlbum} from '../../api';
 import { useParams } from 'react-router-dom';
 import useAlbumProfile from '../../hooks/useAlbumProfile';
 

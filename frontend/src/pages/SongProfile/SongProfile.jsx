@@ -2,9 +2,8 @@ import AlbumHeader from "../../components/AlbumHeader/AlbumHeader";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 import ArtistBadge from "../../components/ArtistBadge/ArtistBadge";
 import "./SongProfile.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams,Link } from "react-router-dom";
-import { fetchSong,fetchAlbum,fetchArtist } from "../../api";
 import useSongProfile from "../../hooks/useSongProfile";
 
 const SongProfile = () => {
@@ -19,6 +18,7 @@ const SongProfile = () => {
       setIsExpanded(!isExpanded);
       setVisibleLines(isExpanded? 5 : song.lyrics.split('\n').length);
     } 
+    song['cover_url'] = album.cover_url;
 
     return (
         <>
