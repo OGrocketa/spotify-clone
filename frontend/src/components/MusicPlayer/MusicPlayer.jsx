@@ -80,6 +80,16 @@
           playNext();
         }
       }
+
+      const convertTimeFromSec = (seconds) => {
+        const secondsRounded = Math.round(seconds);
+        let minutes = Math.floor(secondsRounded / 60);
+        minutes = minutes < 10 ? `${minutes}` : minutes;
+        let modSeconds = secondsRounded % 60;
+        modSeconds = modSeconds < 10 ? `0${modSeconds}` : modSeconds;
+        return `${minutes}:${modSeconds}`;
+    };
+    
     
 
       return (
@@ -104,9 +114,9 @@
                 </button>
               </div>
               <div className='music-slider-container'>
-                <p></p>
+                <p>{convertTimeFromSec(currentTime)}</p>
                 <MusicSlider currentTime={currentTime} duration={duration} onValueChange={handleUserSliderChange}/>
-                {/* <p>{duration}</p> */}
+                <p>{convertTimeFromSec(duration)}</p>
               </div>
             
             </div>

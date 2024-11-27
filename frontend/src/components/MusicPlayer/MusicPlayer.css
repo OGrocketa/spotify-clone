@@ -44,7 +44,6 @@
 .music-main-controls{
     flex: 1;
     flex-direction: column;
-    border: 2px solid red;
 }
 
 .music-main-controls-buttons{
@@ -83,4 +82,9 @@
 .music-slider-container{
     display: flex;
     flex-direction: row;
+    text-align: center;
+    align-items: center;
+}
+.music-slider-container p{
+    margin: 5px;
 }
