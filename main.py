@@ -5,6 +5,7 @@ from database import SessionLocal, engine
 import json
 from fastapi.middleware.cors import CORSMiddleware
 
+
 models.Base.metadata.create_all(bind = engine)
 
 app = FastAPI()

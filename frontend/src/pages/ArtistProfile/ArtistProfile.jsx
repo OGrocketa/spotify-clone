@@ -3,7 +3,6 @@ import "./ArtistProfile.css";
 import SongsList from "../../components/SongsList/SongsList";
 import PlayAlbumLine from "../../components/PlayAlbumLine/PlayAlbumLine";
 import AlbumCard from "../../components/AlbumCard/AlbumCard";
-
 import { Link, useParams } from 'react-router-dom';
 import useArtist from '../../hooks/useArtist';
 
