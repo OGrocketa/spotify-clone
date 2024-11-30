@@ -9,9 +9,13 @@ body{
   color: inherit;
 }
 
-.main_window {
-  padding-bottom: 80px;
+.main-window {
+  padding-bottom: 100px;
+  width: 100%;
+  margin:0;
 }
+
+
 
 
 

@@ -12,7 +12,7 @@ function App() {
   
   return (
     <div className='spotify-clone'>
-      <div className='main_window'>
+      <div className='main-window'>
         <div className='main-window-info'>
           <BrowserRouter>
             <Routes>
