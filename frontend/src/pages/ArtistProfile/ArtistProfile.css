@@ -17,12 +17,10 @@
     font-size: 200%;
     margin: 20px;
 }
-.popular-songs-container{
-    margin: 20px;
-}
+
 
 .discography-container {
-    margin: 20px;
+    margin: 10px;
     display: flex;
     flex-direction: row;
     overflow-x: auto;

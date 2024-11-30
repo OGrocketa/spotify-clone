@@ -9,6 +9,7 @@
 	touch-action: none;
 	width: 80%;
 	height: 20px;
+	cursor: pointer;
 }
 
 .SliderRoot:hover .SliderRange {

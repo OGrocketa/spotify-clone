@@ -21,11 +21,13 @@ function App() {
               <Route path="/album/:album_id" element={<AlbumProfile />} />
               <Route path="/song/:song_id" element={<SongProfile />} />
             </Routes>
+            
+            <div className='main-window-music-player'>
+              <MusicPlayer/>
+            </div>
           </BrowserRouter>
         </div>
-        <div className='main-window-music-player'>
-          <MusicPlayer/>
-        </div>
+       
         
       </div>
       

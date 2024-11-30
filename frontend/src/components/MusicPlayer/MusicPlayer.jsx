@@ -5,6 +5,7 @@
   import { FaCirclePause,FaCirclePlay,FaForwardStep,FaBackwardStep } from "react-icons/fa6";
   import usePlayNewSong from '../../hooks/usePlayNewSong';
   import MusicSlider from '../Slider/MusicSlider';
+  import { Link } from 'react-router-dom';
 
 
   const MusicPlayer = () =>{
@@ -18,8 +19,7 @@
         isPlaying,
         name,
         cover_url,
-        setPlayerIds,
-        setPlayerSongData,
+        artist_id,
         setPlay,
     } = usePlayer();
 
@@ -42,7 +42,6 @@
         }
       }, [isPlaying]);
 
-      
       const playNext = () =>{
         
         const curIndex = ids.findIndex((index) => curId == index);
@@ -104,8 +103,13 @@
             <div className='player-song-info'>
               <img src={cover_url} alt="" />
               <div className="song-title-and-artist-container">
-                <span className='song-title'>{title}</span>
-                <span className='song-artist'>{name}</span>
+                <Link to={`/song/${curId}`} className= 'link-no-style'>
+                  <span className='song-title'>{title}</span>
+                </Link>
+
+                <Link to= {`/artist/${artist_id}`} className= 'link-no-style'>
+                  <span className='song-artist'>{name}</span>
+                </Link>
               </div>
             </div>
 
