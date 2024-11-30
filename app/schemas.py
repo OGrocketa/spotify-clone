@@ -36,7 +36,7 @@ class AlbumCreate(BaseModel):
     album_length: time = None
     track_count: int = None
     release_date: date = None
-    cover_url: Optional[HttpUrl] = None  # Validates the URL for the cover
+    cover_url: Optional[HttpUrl] = None
     album_type: AlbumType  # Enum for 'Album' or 'Single'
     
       
@@ -60,7 +60,7 @@ class SongCreate(BaseModel):
 
 
 class Song(SongCreate):
-    id: str  # ID of the song
+    id: str 
 
     class Config:
         from_attributes = True
