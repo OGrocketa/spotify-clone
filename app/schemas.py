@@ -1,4 +1,4 @@
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, HttpUrl, Field, EmailStr,validator
 from typing import Optional, List
 from enum import Enum
 from datetime import time, date
@@ -77,6 +77,10 @@ class User(BaseModel):
 class UserInDb(User):
     hashed_pwd: str
 
+    class Config:
+        from_attributes = True
+
+
 
 class Token(BaseModel):
     access_token: str
@@ -84,3 +88,17 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: str
+
+class CreateUser(BaseModel):
+    username: str = Field(...,min_length=3, max_length=20, pattern=r'^[a-zA-Z0-9_]+$' )
+    password: str = Field(..., min_length=3)
+    confirm_password: str
+    email: EmailStr
+
+    @validator("password")
+    def validate_password(cls,confirm_password, values):
+        if "password" in values and confirm_password != values["password"]:
+            raise ValueError("Passwords dont match!")
+
+        return confirm_password
+    

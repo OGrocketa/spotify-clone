@@ -8,7 +8,7 @@ from jose import JWTError, jwt
 from database import get_db
 from datetime import timedelta,datetime
 from models import User
-from schemas import Token, UserInDb,TokenData,User
+from schemas import Token, UserInDb,TokenData, CreateUser
 
 ACCESS_TOKEN_EXPIRE_HOURS = 3
 SECRET_KEY = '8===>'
@@ -19,21 +19,18 @@ router = APIRouter()
 pwd_context = CryptContext(['bcrypt'], deprecated= 'auto')
 
 
-
-
 def get_password_hash(password: str):
     return pwd_context.hash(password)
 
-
-def get_user_from_db(username:str, db:Session = Depends(get_db)):
+def get_user_from_db(username:str, db:Session):
     user = db.query(User).filter(User.username == username).first()
-    return UserInDb(**user)
+    return user
 
 def verify_password(hashed_password: str, input_password: str):
     return pwd_context.verify(input_password, hashed_password)
 
-def authenticate_user(username: str, password: str):
-    user = get_user_from_db(username)
+def authenticate_user(username: str, password: str, db: Session):
+    user = get_user_from_db(username,db)
     if not user:
         return False
     if not verify_password(user.hashed_pwd, password):
@@ -48,12 +45,13 @@ def create_access_token(data:dict, expires_delta: timedelta or None = None):
     else:
         expire = datetime.utcnow() + timedelta(minutes=15)
 
-    to_encode = update({"exp": exepire})
+    to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm =ALGORITHM )
+    return encoded_jwt
 
 @router.post('/login_for_access_token', response_model= Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends() ):
-    user = authenticate_user(form_data.username, form_data.password)
+async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db) ):
+    user = authenticate_user(form_data.username, form_data.password, db)
 
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
@@ -62,8 +60,24 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
     access_token_expires = timedelta(ACCESS_TOKEN_EXPIRE_HOURS)
     access_token = create_access_token(data = {"sub":user.username}, expires_delta = access_token_expires)
-    return {"access_token":access_token, "toke_type":"bearer" }
+    return {"access_token":access_token, "token_type":"bearer" }
 
 @router.post('/create_account', status_code=status.HTTP_201_CREATED)
 async def create_account(user: CreateUser, db: Session = Depends(get_db)):
-    pass
+    if db.query(User).filter(user.username == User.username).first():
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Username already used!')
+
+    if db.query(User).filter(user.email == User.email).first():
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Email already used!')
+    
+    hashed_password = get_password_hash(user.password)
+
+    new_user = User(
+        username = user.username,
+        email = user.email,
+        hashed_pwd = hashed_password
+    )
+
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
