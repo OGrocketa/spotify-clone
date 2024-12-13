@@ -5,34 +5,33 @@ import SongProfile from './pages/SongProfile/SongProfile.jsx'
 import ArtistProfile from './pages/ArtistProfile/ArtistProfile.jsx'
 import HomePage from './pages/HomePage/HomePage.jsx';
 import MusicPlayer from './components/MusicPlayer/MusicPlayer.jsx';
+import SearchBar from './components/SearchBar/SearchBar.jsx';
 
-
-const song_id = 'adc8dc3c-a016-11ef-a0ab-cc607d4f1785';
 function App() {
   
   return (
-    <div className='spotify-clone'>
-      <div className='main-window'>
-        <div className='main-window-info'>
+
+        <div className='spotify-clone'>
           <BrowserRouter>
+          <div className='search-bar-container'>
+            <SearchBar/>
+          </div>
+          <div className='main-window'>
             <Routes>
               <Route path='/' element={<HomePage/>}/>
               <Route path="/artist/:artist_id" element={<ArtistProfile />} />
               <Route path="/album/:album_id" element={<AlbumProfile />} />
               <Route path="/song/:song_id" element={<SongProfile />} />
             </Routes>
+          </div>
             
-            <div className='main-window-music-player'>
+            <div>
               <MusicPlayer/>
             </div>
           </BrowserRouter>
         </div>
-       
-        
-      </div>
+          
       
-    </div>
-   
   );
 }
 
