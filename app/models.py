@@ -1,7 +1,6 @@
-# models.py
 import uuid
 from database import Base
-from sqlalchemy import Integer,Column, String, Text, Enum, JSON, ForeignKey
+from sqlalchemy import Integer,Column, String, Text, Enum, JSON, ForeignKey,Boolean
 from sqlalchemy.sql.sqltypes import TIME,DATE
 from sqlalchemy.dialects.mysql import CHAR
 from sqlalchemy.orm import relationship
@@ -50,4 +49,13 @@ class Song(Base):
     release_date = Column(DATE, nullable=False, default='CURRENT_DATE')
     # Relationship to Album 
     album = relationship("Album", back_populates="songs")
-    
+
+class User(Base):
+    __tablename__ = 'users'
+
+    user_id = Column(CHAR(36), primary_key=True, default=lambda:str(uuid.uuid4()))
+    username = Column(String(255), unique=True, nullable=False)
+    email = Column(String(255), unique=True, nullable=True)
+    avatar_url = Column(String(255), nullable=True)
+    disabled = Column(Boolean, default=False, nullable=True)  # Boolean flag, default = 1
+    hashed_pwd = Column(String(255), nullable=False) 

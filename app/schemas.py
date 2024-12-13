@@ -64,3 +64,20 @@ class Song(SongCreate):
 
     class Config:
         from_attributes = True
+
+
+##Auth schemas
+class User(BaseModel):
+    user_id: str
+    username: str
+    email: Optional[str] = None
+    avatar_url: Optional[str] = None
+    disabled: Optional[bool] = None
+
+class UserInDb(User):
+    hashed_pwd: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
