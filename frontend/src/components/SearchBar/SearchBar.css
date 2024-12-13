@@ -38,5 +38,5 @@
 }
 
 .search-input::placeholder {
-    color: hsl(0, 0%, 70%); /* Placeholder color */
+    color: hsl(0, 0%, 70%);
 }
