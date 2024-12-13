@@ -8,7 +8,7 @@ from jose import JWTError, jwt
 from database import get_db
 from datetime import timedelta,datetime
 from models import User
-from schemas import Token, User, UserInDb
+from schemas import Token, UserInDb,TokenData,User
 
 ACCESS_TOKEN_EXPIRE_HOURS = 3
 SECRET_KEY = '8===>'
@@ -27,7 +27,7 @@ def get_password_hash(password: str):
 
 def get_user_from_db(username:str, db:Session = Depends(get_db)):
     user = db.query(User).filter(User.username == username).first()
-    return user
+    return UserInDb(**user)
 
 def verify_password(hashed_password: str, input_password: str):
     return pwd_context.verify(input_password, hashed_password)
@@ -63,3 +63,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     access_token_expires = timedelta(ACCESS_TOKEN_EXPIRE_HOURS)
     access_token = create_access_token(data = {"sub":user.username}, expires_delta = access_token_expires)
     return {"access_token":access_token, "toke_type":"bearer" }
+
+@router.post('/create_account', status_code=status.HTTP_201_CREATED)
+async def create_account(user: CreateUser, db: Session = Depends(get_db)):
+    pass
