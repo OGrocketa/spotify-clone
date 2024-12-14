@@ -8,7 +8,6 @@ const SearchBar = () =>{
 
     const path = useLocation();
     const isOnMainPage = path.pathname == '/';
-    console.log(isOnMainPage);
 
     return(
         <>
@@ -30,6 +29,10 @@ const SearchBar = () =>{
 
             <input type="text" className="search-input" placeholder="Search for songs, artists, albums..." />
             </div>
+
+            <button className="login-button">
+                Login
+            </button>
             
         </div>
         
