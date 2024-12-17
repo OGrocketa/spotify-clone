@@ -14,6 +14,8 @@ dist-ssr
 /venv
 __pycache__
 AWS.py
+googleauth.txt
+
 
 # Editor directories and files
 .vscode/*

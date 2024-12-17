@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import './SearchBar.css'
 import { GoHome,GoHomeFill  } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Login from "../Login/Login";
 
 const SearchBar = () =>{
 
     const path = useLocation();
     const isOnMainPage = path.pathname == '/';
 
+    const [loginVisible, setLoginVisible] = useState(false);
+    const diplayLogin = () => setLoginVisible(true);
+    const hideLogin = () => setLoginVisible(false);
+
     return(
-        <>
         <div className="search-bar-container">
             
                 <div className="logo-container">
@@ -29,14 +33,17 @@ const SearchBar = () =>{
 
             <input type="text" className="search-input" placeholder="Search for songs, artists, albums..." />
             </div>
-
-            <button className="login-button">
-                Login
+            
+            <button className="register-button">
+                Register
             </button>
             
+                <button className="login-button" onClick={diplayLogin}>
+                    Login
+                </button>
+            
+            <Login isVisible={loginVisible} onClose={hideLogin}/>
         </div>
-        
-        </>
     );
 }
 
