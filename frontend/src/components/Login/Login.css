@@ -69,6 +69,7 @@ form p{
   border:none;
   margin-right: 15px;
   padding: 10px 35px;
+  transition: scale 0.1s ease;
 }
 
 .submit-button:hover{

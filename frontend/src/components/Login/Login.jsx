@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import './Login.css'
 import { GrClose } from "react-icons/gr";
+import { FaRegEye,FaRegEyeSlash } from "react-icons/fa6";
+
 
 
 const Login = ({isVisible, onClose}) => {
     if (!isVisible) return null;
 
-    const handleSubmit = () => {
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [loginData, setLoginData] = useState({
+      username: '',
+      password: ''
+    });
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(loginData);
+    };
+
+    const handleChange = e =>{
+      setLoginData({
+        ...loginData,
+        [e.target.name]: e.target.value,
+      });
+    };
+
+    const togglePasswordVisibility = ()=>{
+      setPasswordVisible(!passwordVisible)
     }
 
     return(
@@ -25,13 +45,17 @@ const Login = ({isVisible, onClose}) => {
                 <div className="login-form">
                   <form onSubmit={handleSubmit}>
                     <p>Email or username</p>
-                    <input type="text" placeholder="Enter email or username" />
+                    <input name="username" type="text" placeholder="Enter email or username" value={loginData.username} onChange={handleChange}/>
                     <p>Password</p>
-                    <input type="text" placeholder="Enter password" />
-                  </form>
-                  <button type="submit" className="submit-button">
+                    <input name="password" type={passwordVisible? "text" : "password"} placeholder="Enter password" value={loginData.password} onChange={handleChange}/>
+                    <span className="eye-icon" onClick={togglePasswordVisibility}>
+                      {passwordVisible ? <FaRegEye /> : <FaRegEyeSlash />}
+                    </span>
+                    <button type="submit" className="submit-button">
                     Login
-                  </button>
+                    </button>
+                  </form>
+                  
                 </div>
                 
 
