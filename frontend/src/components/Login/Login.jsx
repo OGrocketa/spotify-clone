@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './Login.css'
 import { GrClose } from "react-icons/gr";
 import { FaRegEye,FaRegEyeSlash } from "react-icons/fa6";
+import { sendUserLoginAndPassword } from "../../api/login";
 
 
 
@@ -14,8 +15,19 @@ const Login = ({isVisible, onClose}) => {
       password: ''
     });
 
-    const handleSubmit = (e) => {
+    const [error, setError] = useState(null);
+
+
+    const handleSubmit = async (e) => {
       e.preventDefault();
+      setError(null);
+
+      const repsonse = await sendUserLoginAndPassword(loginData);
+      if (repsonse) {
+        alert("Login successful! Access Token: " + repsonse.access_token);
+      } else {
+        setError("Failed to login. Please check your credentials.");
+      }
     };
 
     const handleChange = e =>{
@@ -56,7 +68,7 @@ const Login = ({isVisible, onClose}) => {
                   </form>
                   
                 </div>
-                
+                {error && <p>{error}</p>}
 
             </div>
        </div>
