@@ -16,7 +16,6 @@ const Login = ({isVisible, onClose}) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(loginData);
     };
 
     const handleChange = e =>{

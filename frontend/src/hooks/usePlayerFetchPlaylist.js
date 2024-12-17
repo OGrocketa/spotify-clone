@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { fetchSong, fetchAlbum, fetchArtist,fetchSongsFromAlbum } from '../api';
 import usePlayer from './usePlayer';
 
 const usePlayerFetchPlaylist = () => {

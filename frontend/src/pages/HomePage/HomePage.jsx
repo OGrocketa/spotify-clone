@@ -1,7 +1,7 @@
 import React from 'react';
 import './HomePage.css'; 
 import { useEffect,useState } from 'react';
-import { fetchAllArtists } from '../../api';
+import { fetchAllArtists } from '../../api/artists';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import { Link } from 'react-router-dom';
 

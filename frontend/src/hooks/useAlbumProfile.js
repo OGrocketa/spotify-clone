@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { fetchAlbum, fetchArtist, fetchSongsFromAlbum } from '../api';
+import { fetchAlbum } from '../api/albums';
+import { fetchArtist } from '../api/artists';
+import { fetchSongsFromAlbum } from '../api/songs';
 
 const useAlbumProfile = (album_id) => {
   const [album, setAlbum] = useState(null);
