@@ -1,9 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from passlib.context import CryptContext
-from fastapi import APIRouter, HTTPException, Depends, status
+from fastapi import APIRouter, HTTPException, Depends, status,Form
 from typing import Optional,Any
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.responses import JSONResponse
 from jose import JWTError, jwt
 from database import get_db
 from datetime import timedelta,datetime
@@ -63,21 +64,27 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token":access_token, "token_type":"bearer" }
 
 @router.post('/create_account', status_code=status.HTTP_201_CREATED)
-async def create_account(user: CreateUser, db: Session = Depends(get_db)):
-    if db.query(User).filter(user.username == User.username).first():
+async def create_account(username: str = Form(...),
+                         password: str = Form(...),
+                         confirm_password: str = Form(...),
+                         email: EmailStr = Form(...),
+                         db: Session = Depends(get_db)):
+
+    if db.query(User).filter(username == User.username).first():
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Username already used!')
 
-    if db.query(User).filter(user.email == User.email).first():
+    if db.query(User).filter(email == User.email).first():
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Email already used!')
     
-    hashed_password = get_password_hash(user.password)
+    hashed_password = get_password_hash(password)
 
     new_user = User(
-        username = user.username,
-        email = user.email,
+        username = username,
+        email = email,
         hashed_pwd = hashed_password
     )
 
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+    return JSONResponse(status_code= status.HTTP_201_CREATED, content= {"message":"user registered successfully"})
