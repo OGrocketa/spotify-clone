@@ -57,5 +57,4 @@ class User(Base):
     username = Column(String(255), unique=True, nullable=False)
     email = Column(String(255), unique=True, nullable=True)
     avatar_url = Column(String(255), nullable=True)
-    disabled = Column(Boolean, default=False, nullable=True)  # Boolean flag, default = 1
     hashed_pwd = Column(String(255), nullable=False) 

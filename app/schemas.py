@@ -72,7 +72,6 @@ class User(BaseModel):
     username: str
     email: Optional[str] = None
     avatar_url: Optional[str] = None
-    disabled: Optional[bool] = None
 
 class UserInDb(User):
     hashed_pwd: str
