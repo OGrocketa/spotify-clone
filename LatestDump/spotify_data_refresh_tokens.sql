@@ -16,32 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `refresh_tokens`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `refresh_tokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `user_id` char(36) NOT NULL DEFAULT (uuid()),
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `avatar_url` varchar(255) DEFAULT NULL,
-  `hashed_pwd` varchar(255) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
+CREATE TABLE `refresh_tokens` (
+  `username` int NOT NULL,
+  `jwt_refresh_token` int NOT NULL,
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `refresh_tokens`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('ec40b8f7-17a0-4c8a-a363-505dbf58c418','ysedach','dsds@gmail.com',NULL,'$2b$12$RCq9dXuqenBsRQDNkg19sOL6fFOMz5GEJcJnNnF9/1UM/fqXSV9Ie');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `refresh_tokens` WRITE;
+/*!40000 ALTER TABLE `refresh_tokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `refresh_tokens` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
