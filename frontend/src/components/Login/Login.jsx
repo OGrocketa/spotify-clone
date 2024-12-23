@@ -25,6 +25,7 @@ const Login = ({isVisible, onClose}) => {
       const repsonse = await sendUserLoginAndPassword(loginData);
       if (repsonse) {
         alert("Login successful! Access Token: " + repsonse.access_token);
+        console.log(repsonse.access_token);
       } else {
         setError("Failed to login. Please check your credentials.");
       }

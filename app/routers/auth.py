@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from passlib.context import CryptContext
-from fastapi import APIRouter, HTTPException, Depends, status,Form
+from fastapi import APIRouter, HTTPException, Depends, status,Form, Response, Request
 from typing import Optional,Any
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
@@ -11,7 +11,9 @@ from datetime import timedelta,datetime
 from models import User
 from schemas import Token, UserInDb,TokenData, CreateUser
 
-ACCESS_TOKEN_EXPIRE_HOURS = 3
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+REFRESH_TOKEN_EXPIRE_DAYS = 7
+
 SECRET_KEY = '8===>'
 ALGORITHM = 'HS256'
 
@@ -50,8 +52,15 @@ def create_access_token(data:dict, expires_delta: timedelta or None = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm =ALGORITHM )
     return encoded_jwt
 
+def create_refresh_token(data:dict, expires_delta: timedelta or None = None):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + expires_delta
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm =ALGORITHM )
+    return encoded_jwt
+
 @router.post('/login_for_access_token', response_model= Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db) ):
+async def login_for_access_token(response: Response, form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db) ):
     user = authenticate_user(form_data.username, form_data.password, db)
 
     if not user:
@@ -59,8 +68,19 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
                             detail='Incorrect username or password',
                             headers={"WWW-Authenticate": "Bearer"})
 
-    access_token_expires = timedelta(ACCESS_TOKEN_EXPIRE_HOURS)
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    refresh_token_expires = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
+
     access_token = create_access_token(data = {"sub":user.username}, expires_delta = access_token_expires)
+    refresh_token = create_access_token(data={"sub":user.username}, expires_delta = refresh_token_expires)
+
+    response.set_cookie(
+        key="refresh_token",
+        value= refresh_token,
+        httponly = True,
+        secure = True,
+        samesite = "strict"
+    )
     return {"access_token":access_token, "token_type":"bearer" }
 
 @router.post('/create_account', status_code=status.HTTP_201_CREATED)
@@ -88,3 +108,35 @@ async def create_account(username: str = Form(...),
     db.commit()
     db.refresh(new_user)
     return JSONResponse(status_code= status.HTTP_201_CREATED, content= {"message":"user registered successfully"})
+
+@router.post('/refresh_access_token',response_model= Token)
+async def refresh_token(request: Request, response: Response, db: Session= Depends(get_db)):
+    refresh_token = request.cookies.get("refresh_token")
+
+    if not refresh_token:
+        raise HTTPException(status_code= status.HTTP_401_UNAUTHORIZED, detail="Refresh token missing")
+    
+    try:
+        payload = jwt.decode(refresh_token, SECRET_KEY, algorithms= [ALGORITHM])
+        username = payload.get("sub")
+
+        if not username:
+            raise HTTPException(status_code= status.HTTP_401_UNAUTHORIZED,detail="Invalid token username is missing")
+        
+    except JWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+
+    user = db.query(User).filter(username == User.username).first()
+
+    if not user:
+        raise HTTPException(status_code = status.HTTP_401_UNAUTHORIZED, detail= "User not found")
+
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token({"sub":user.username}, access_token_expires)
+
+    return {"access_token": access_token, "token_type":"bearer"}
+
+@router.post("/logout")
+async def logout(response: Response):
+    response.delete_cookie("refresh_token")
+    return {"message": "Logged out successfully"}
