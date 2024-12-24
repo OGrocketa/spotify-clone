@@ -3,7 +3,7 @@ from passlib.context import CryptContext
 from fastapi import APIRouter, HTTPException, Depends, status,Form, Response, Request
 from typing import Optional,Any
 from sqlalchemy.orm import Session
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm,OAuth2PasswordBearer
 from fastapi.responses import JSONResponse
 from jose import JWTError, jwt
 from database import get_db
@@ -20,7 +20,7 @@ ALGORITHM = 'HS256'
 router = APIRouter()
 
 pwd_context = CryptContext(['bcrypt'], deprecated= 'auto')
-
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login_for_access_token")
 
 def get_password_hash(password: str):
     return pwd_context.hash(password)
@@ -110,7 +110,7 @@ async def create_account(username: str = Form(...),
     return JSONResponse(status_code= status.HTTP_201_CREATED, content= {"message":"user registered successfully"})
 
 @router.post('/refresh_access_token',response_model= Token)
-async def refresh_token(request: Request, response: Response, db: Session= Depends(get_db)):
+async def refresh_access_token(request: Request, response: Response, db: Session= Depends(get_db)):
     refresh_token = request.cookies.get("refresh_token")
 
     if not refresh_token:
@@ -140,3 +140,20 @@ async def refresh_token(request: Request, response: Response, db: Session= Depen
 async def logout(response: Response):
     response.delete_cookie("refresh_token")
     return {"message": "Logged out successfully"}
+
+@router.post("/check_logged_in")
+async def check_logged_in(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms= [ALGORITHM])
+        username = payload.get("sub")
+        if not username:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+    except JWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token is invalid or expired")
+
+    # Ensure the user exists in the database
+    user = db.query(User).filter(User.username == username).first()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
+
+    return {"message": "User is logged in", "username": username}
