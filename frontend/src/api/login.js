@@ -53,3 +53,21 @@ export async function registerUser(userData){
     }
 
 }
+
+export async function logout_user(){
+    const url = "http://localhost:8000/logout"
+    try{
+        const response = await fetch(url,{
+            method:"POST",
+        });
+
+        if(!response.ok){
+            throw Error(`HTTP error! Status: ${response.status}`);
+        }
+        return await response.json();
+        
+    }catch(error){
+        console.error(`Couldn't logout a user!: ${error}`);
+        return null
+    }
+}
