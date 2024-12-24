@@ -157,3 +157,4 @@ async def check_logged_in(token: str = Depends(oauth2_scheme), db: Session = Dep
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
 
     return {"message": "User is logged in", "username": username}
+
