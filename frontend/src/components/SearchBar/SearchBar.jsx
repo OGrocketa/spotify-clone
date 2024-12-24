@@ -12,7 +12,7 @@ const SearchBar = () =>{
     const isOnMainPage = path.pathname == '/';
 
     const [loginVisible, setLoginVisible] = useState(false);
-    const diplayLogin = () => setLoginVisible(true);
+    const displayLogin = () => setLoginVisible(true);
     const hideLogin = () => setLoginVisible(false);
 
     const [registerVisible, setRegisterVisible] = useState(false);
@@ -44,7 +44,7 @@ const SearchBar = () =>{
             </button>
             <Register isVisible={registerVisible} onClose={hideRegister}/>
             
-                <button className="login-button" onClick={diplayLogin}>
+                <button className="login-button" onClick={displayLogin}>
                     Login
                 </button>
             
