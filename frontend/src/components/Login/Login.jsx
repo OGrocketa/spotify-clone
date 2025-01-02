@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './Login.css'
 import { GrClose } from "react-icons/gr";
 import { FaRegEye,FaRegEyeSlash } from "react-icons/fa6";
 import { sendUserLoginAndPassword } from "../../api/login";
+import useAuth from "../../hooks/useAuth"
 
 
-
-const Login = ({isVisible, onClose}) => {
+const Login = ({isVisible, onClose,setLoginVisible}) => {
     if (!isVisible) return null;
+    const {setAuth,auth} = useAuth();
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [loginData, setLoginData] = useState({
@@ -22,10 +23,10 @@ const Login = ({isVisible, onClose}) => {
       e.preventDefault();
       setError(null);
 
-      const repsonse = await sendUserLoginAndPassword(loginData);
-      if (repsonse) {
-        alert("Login successful! Access Token: " + repsonse.access_token);
-        console.log(repsonse.access_token);
+      const response = await sendUserLoginAndPassword(loginData);
+      if (response) {
+        setAuth(response.access_token);
+        setLoginVisible(false);
       } else {
         setError("Failed to login. Please check your credentials.");
       }
@@ -63,9 +64,8 @@ const Login = ({isVisible, onClose}) => {
                     <span className="eye-icon" onClick={togglePasswordVisibility}>
                       {passwordVisible ? <FaRegEye /> : <FaRegEyeSlash />}
                     </span>
-                    <button type="submit" className="submit-button">
-                    Login
-                    </button>
+                    <button type="submit" className="submit-button">Login</button>
+                    
                   </form>
                   
                 </div>

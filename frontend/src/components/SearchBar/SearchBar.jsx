@@ -42,13 +42,13 @@ const SearchBar = () =>{
             <button className="register-button" onClick={displayRegister}>
                 Register
             </button>
-            <Register isVisible={registerVisible} onClose={hideRegister}/>
+            <Register isVisible={registerVisible} onClose={hideRegister} setRegisterVisible={setRegisterVisible} setLoginVisible={setLoginVisible}/>
             
                 <button className="login-button" onClick={displayLogin}>
                     Login
                 </button>
             
-            <Login isVisible={loginVisible} onClose={hideLogin}/>
+            <Login isVisible={loginVisible} onClose={hideLogin} setLoginVisible={setLoginVisible}/>
         </div>
     );
 }

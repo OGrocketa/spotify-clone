@@ -5,7 +5,7 @@ import { GrClose } from "react-icons/gr";
 import { FaRegEye,FaRegEyeSlash } from "react-icons/fa6";
 import {registerUser} from "../../api/login";
 
-const Register = ({isVisible, onClose}) =>{
+const Register = ({isVisible, onClose, setRegisterVisible,setLoginVisible}) =>{
     if (!isVisible) return null;
 
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -31,9 +31,12 @@ const Register = ({isVisible, onClose}) =>{
             
             setError(null);
 
-            const repsonse = await registerUser(loginData);
-            if (repsonse) {
-                alert(repsonse.message); 
+            const response = await registerUser(loginData);
+            if (response) {
+                alert(response.message); 
+                setRegisterVisible(false);
+                setLoginVisible(true);
+
             } else {
                 setError("Failed to register. Something went wrong!.");
             }
