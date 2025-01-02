@@ -71,8 +71,8 @@ async def login_for_access_token(response: Response, form_data: OAuth2PasswordRe
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     refresh_token_expires = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
 
-    access_token = create_access_token(data = {"sub":user.username}, expires_delta = access_token_expires)
-    refresh_token = create_access_token(data={"sub":user.username}, expires_delta = refresh_token_expires)
+    access_token = create_access_token(data = {"sub":user.username,"email":user.email, "avatar_url":user.avatar_url}, expires_delta = access_token_expires)
+    refresh_token = create_access_token(data={"sub":user.username,"email":user.email, "avatar_url":user.avatar_url}, expires_delta = refresh_token_expires)
 
     response.set_cookie(
         key="refresh_token",
@@ -132,7 +132,7 @@ async def refresh_access_token(request: Request, response: Response, db: Session
         raise HTTPException(status_code = status.HTTP_401_UNAUTHORIZED, detail= "User not found")
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    access_token = create_access_token({"sub":user.username}, access_token_expires)
+    access_token = create_access_token({"sub":user.username,"email":user.email, "avatar_url":user.avatar_url}, access_token_expires)
 
     return {"access_token": access_token, "token_type":"bearer"}
 
