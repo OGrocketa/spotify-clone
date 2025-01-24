@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './SearchBar.css'
 import { GoHome,GoHomeFill  } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import {jwtDecode} from "jwt-decode";
+import useAuth from "../../hooks/useAuth";
 
 const SearchBar = () =>{
 
@@ -18,6 +20,24 @@ const SearchBar = () =>{
     const [registerVisible, setRegisterVisible] = useState(false);
     const displayRegister = () => setRegisterVisible(true);
     const hideRegister = () => setRegisterVisible(false);
+
+    const { auth } = useAuth();
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        if (auth) {
+            try {
+                const decoded = jwtDecode(auth);
+                setData(decoded);
+                console.log(data);
+                
+            } catch (e) {
+                console.error("Failed to decode token", e);
+            }
+        } else {
+            setData(null);
+        }
+    }, [auth]);
 
     return(
         <div className="search-bar-container">
