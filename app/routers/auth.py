@@ -72,8 +72,7 @@ async def login_for_access_token(response: Response, form_data: OAuth2PasswordRe
         key="refresh_token",
         value= refresh_token,
         httponly = True,
-        secure = True,
-        samesite = "none",
+        samesite="lax"
     )
     return {"access_token":access_token, "token_type":"bearer" }
 
@@ -132,19 +131,10 @@ async def refresh_access_token(request: Request, response: Response, db: Session
 
 @router.post("/logout")
 async def logout(response: Response, request: Request):
-    # Retrieve the refresh_token from cookies
-    refresh_token = request.cookies.get('refresh_token')
 
-    if not refresh_token:
-        # No refresh token: Return a 204 No Content response
-        response.status_code = 204
-        return 
-
-    # Delete the refresh_token cookie
     response.delete_cookie(
-        key="refresh_token"
+        key="refresh_token",
     )
-
     # Return a success message
     return {"message" : "Logged out!"}
 

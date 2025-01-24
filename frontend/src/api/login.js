@@ -14,6 +14,7 @@ export async function sendUserLoginAndPassword (loginData){
                 'Content-Type':'application/x-www-form-urlencoded',
             },
             body:formData,
+            credentials: 'include',
         });
         if(!response.ok){
             throw Error(`HTTP error! Status: ${response.status}`);
