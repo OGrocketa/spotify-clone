@@ -22,11 +22,11 @@ const SearchBar = () =>{
     return(
         <div className="search-bar-container">
             
-                <div className="logo-container">
-                    <Link to={`/`}>
-                        <img src="/images/logo.png" alt="" />   
-                    </Link>
-                </div>
+            <div className="logo-container">
+                <Link to={`/`}>
+                    <img src="/images/logo.png" alt="" />   
+                </Link>
+            </div>
            
             
             <div className="center-of-sbc">
