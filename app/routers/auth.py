@@ -52,12 +52,6 @@ def create_access_token(data:dict, expires_delta: timedelta or None = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm =ALGORITHM )
     return encoded_jwt
 
-def create_refresh_token(data:dict, expires_delta: timedelta or None = None):
-    to_encode = data.copy()
-    expire = datetime.utcnow() + expires_delta
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm =ALGORITHM )
-    return encoded_jwt
 
 @router.post('/login_for_access_token', response_model= Token)
 async def login_for_access_token(response: Response, form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db) ):
@@ -71,15 +65,15 @@ async def login_for_access_token(response: Response, form_data: OAuth2PasswordRe
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     refresh_token_expires = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
 
-    access_token = create_access_token(data = {"sub":user.username,"email":user.email, "avatar_url":user.avatar_url}, expires_delta = access_token_expires)
-    refresh_token = create_access_token(data={"sub":user.username,"email":user.email, "avatar_url":user.avatar_url}, expires_delta = refresh_token_expires)
+    access_token = create_access_token(data = {"sub":user.username,"email":user.email, "avatar_url":user.avatar_url, "role": user.role}, expires_delta = access_token_expires)
+    refresh_token = create_access_token(data={"sub":user.username,"email":user.email, "avatar_url":user.avatar_url, "role": user.role}, expires_delta = refresh_token_expires)
 
     response.set_cookie(
         key="refresh_token",
         value= refresh_token,
         httponly = True,
         secure = True,
-        samesite = "strict"
+        samesite = "none",
     )
     return {"access_token":access_token, "token_type":"bearer" }
 
@@ -132,29 +126,26 @@ async def refresh_access_token(request: Request, response: Response, db: Session
         raise HTTPException(status_code = status.HTTP_401_UNAUTHORIZED, detail= "User not found")
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    access_token = create_access_token({"sub":user.username,"email":user.email, "avatar_url":user.avatar_url}, access_token_expires)
+    access_token = create_access_token({"sub":user.username,"email":user.email, "avatar_url":user.avatar_url,"role": user.role}, access_token_expires)
 
     return {"access_token": access_token, "token_type":"bearer"}
 
 @router.post("/logout")
-async def logout(response: Response):
-    response.delete_cookie("refresh_token")
-    return {"message": "Logged out successfully"}
+async def logout(response: Response, request: Request):
+    # Retrieve the refresh_token from cookies
+    refresh_token = request.cookies.get('refresh_token')
 
-@router.post("/check_logged_in")
-async def check_logged_in(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms= [ALGORITHM])
-        username = payload.get("sub")
-        if not username:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
-    except JWTError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token is invalid or expired")
+    if not refresh_token:
+        # No refresh token: Return a 204 No Content response
+        response.status_code = 204
+        return 
 
-    # Ensure the user exists in the database
-    user = db.query(User).filter(User.username == username).first()
-    if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
+    # Delete the refresh_token cookie
+    response.delete_cookie(
+        key="refresh_token"
+    )
 
-    return {"message": "User is logged in", "username": username}
+    # Return a success message
+    return {"message" : "Logged out!"}
+
 

@@ -58,3 +58,4 @@ class User(Base):
     email = Column(String(255), unique=True, nullable=True)
     avatar_url = Column(String(255), nullable=True)
     hashed_pwd = Column(String(255), nullable=False) 
+    role = Column(Integer, nullable=False, default=0)

@@ -3,6 +3,7 @@ import { fetchAlbum } from '../api/albums';
 import { fetchArtist } from '../api/artists';
 import { fetchSongsFromAlbum } from '../api/songs';
 
+//Load album data by id of the album
 const useAlbumProfile = (album_id) => {
   const [album, setAlbum] = useState(null);
   const [artist, setArtist] = useState(null);
