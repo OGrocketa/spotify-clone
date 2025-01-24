@@ -83,7 +83,7 @@ const SearchBar = () =>{
             
             <div>
                 {isTokenExpired ? (
-                    <div>
+                    <div className="register-login-container">
                          <button className="register-button" onClick={displayRegister}>
                             Register
                         </button>
