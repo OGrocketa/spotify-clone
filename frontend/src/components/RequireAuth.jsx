@@ -9,14 +9,6 @@ const RequireAuth = ({allowedRoles}) =>{
     const [role, setRole] = useState(null);
     const [expired, setExpired] = useState(true);
     const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        console.log("Auth value:", auth);
-        console.log("Role:", role);
-    }, [auth]);
-
-    
-
     
     useEffect(() => {
         const checkToken = async () => {

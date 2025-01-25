@@ -9,12 +9,13 @@ import {jwtDecode} from "jwt-decode";
 import useAuth from "../../hooks/useAuth";
 import { axiosPrivate } from "../../api/axios";
 import useRefreshToken from "../../hooks/useRefreshToken";
+import { useNavigate } from "react-router-dom";
 
 
 const SearchBar = () =>{
 
     const refresh = useRefreshToken();
-
+    const navigate = useNavigate();
     const path = useLocation();
     const isOnMainPage = path.pathname == '/';
 
@@ -68,6 +69,7 @@ const SearchBar = () =>{
     
             if (response.status === 200) {
                 setAuth(null);
+                navigate("/", {replace:true});
             }
         } catch (error) {
             console.error("Failed to logout:", error);
@@ -115,11 +117,10 @@ const SearchBar = () =>{
                             <img src={data?.avatar_url} alt="User Avatar"/>
                         </Link>
                         
-                        <Link to={'/'}>
-                            <button className="login-button" onClick={handleLogout}>
-                                Logout
-                            </button>
-                        </Link>
+                        <button className="login-button" onClick={handleLogout}>
+                            Logout
+                        </button>
+                        
                        
                     </div>
                 )}

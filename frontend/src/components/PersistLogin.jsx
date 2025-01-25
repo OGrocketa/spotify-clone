@@ -21,10 +21,14 @@ const PersistLogin = () =>{
                 setIsLoading(false);
             }
         }
-        const decoded = jwtDecode(auth.access_token);
-        const currentTime = Date.now() / 1000;
-        setExpired(decoded.exp < currentTime);
-        expired ? verifyRefreshToken() : setIsLoading(false);
+        if(auth?.access_token){
+            const decoded = jwtDecode(auth?.access_token);
+            const currentTime = Date.now() / 1000;
+            setExpired(decoded.exp < currentTime);
+            expired ? verifyRefreshToken() : setIsLoading(false);
+        }else{
+            setIsLoading(true);
+        }
     },[]);
 
     return(
