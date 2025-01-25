@@ -8,8 +8,12 @@ import Register from "../Register/Register";
 import {jwtDecode} from "jwt-decode";
 import useAuth from "../../hooks/useAuth";
 import { axiosPrivate } from "../../api/axios";
+import useRefreshToken from "../../hooks/useRefreshToken";
+
 
 const SearchBar = () =>{
+
+    const refresh = useRefreshToken();
 
     const path = useLocation();
     const isOnMainPage = path.pathname == '/';
@@ -26,9 +30,9 @@ const SearchBar = () =>{
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        if (auth) {
+        if (auth?.access_token) {
             try {
-                const decoded = jwtDecode(auth);
+                const decoded = jwtDecode(auth.access_token);
                 setData(decoded);
                 const currentTime = Date.now() / 1000;
                 setIsTokenExpired(decoded.exp < currentTime);
@@ -42,9 +46,19 @@ const SearchBar = () =>{
         }
     }, [auth]);
 
-    useEffect(() => {
-        console.log(data);
-    },[data]);
+    useEffect(()=>{
+        const verifyRefreshToken = async() =>{
+            try{
+                await refresh();
+            }catch(error){
+                console.error(error);
+            }
+        }
+        if(!auth?.access_token){
+            verifyRefreshToken();
+        }
+        
+    },[]);
 
     const [isTokenExpired, setIsTokenExpired] = useState(true);
 
@@ -59,6 +73,7 @@ const SearchBar = () =>{
             console.error("Failed to logout:", error);
         }
     };
+    
         
 
     return(
@@ -96,7 +111,10 @@ const SearchBar = () =>{
                        
                 ) : (
                     <div className="user-info">
-                        <img src={data?.avatar_url} alt="User Avatar" />
+                        <Link to={'/user'}>
+                            <img src={data?.avatar_url} alt="User Avatar"/>
+                        </Link>
+                        
                         <button className="login-button" onClick={handleLogout}>
                             Logout
                         </button>

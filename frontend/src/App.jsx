@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/HomePage.jsx';
 import PersistLogin from './components/PersistLogin.jsx'
 import Layout from '../Layout.jsx';
 import RequireAuth from './components/RequireAuth.jsx';
+import User_Profile from './pages/UserProfile/UserProfile.jsx';
 
 const Roles = {
     'User' : 0,
@@ -29,7 +30,7 @@ function App() {
               <Route element={<PersistLogin/>}>
               {/* Private routes */}
                 <Route element ={<RequireAuth allowedRoles={[Roles.User, Roles.Moderator, Roles.Admin]}/>} >
-                  <Route path="/user" element={<HomePage/>}/>
+                  <Route path="/user" element={<User_Profile/>}/>
                 </Route>
               </Route>
               

@@ -103,9 +103,9 @@ async def create_account(username: str = Form(...),
     return JSONResponse(status_code= status.HTTP_201_CREATED, content= {"message":"user registered successfully"})
 
 @router.post('/refresh_access_token',response_model= Token)
-async def refresh_access_token(request: Request, response: Response, db: Session= Depends(get_db)):
+async def refresh_access_token(request: Request, db: Session= Depends(get_db)):
     refresh_token = request.cookies.get("refresh_token")
-
+    
     if not refresh_token:
         raise HTTPException(status_code= status.HTTP_401_UNAUTHORIZED, detail="Refresh token missing")
     
@@ -126,7 +126,7 @@ async def refresh_access_token(request: Request, response: Response, db: Session
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token({"sub":user.username,"email":user.email, "avatar_url":user.avatar_url,"role": user.role}, access_token_expires)
-
+    
     return {"access_token": access_token, "token_type":"bearer"}
 
 @router.post("/logout")

@@ -1,10 +1,9 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import './Login.css'
 import { GrClose } from "react-icons/gr";
 import { FaRegEye,FaRegEyeSlash } from "react-icons/fa6";
 import { sendUserLoginAndPassword } from "../../api/login";
 import useAuth from "../../hooks/useAuth"
-import { use } from "react";
 
 
 const Login = ({isVisible, onClose,setLoginVisible}) => {
@@ -26,12 +25,13 @@ const Login = ({isVisible, onClose,setLoginVisible}) => {
 
       const response = await sendUserLoginAndPassword(loginData);
       if (response) {
-        setAuth(response.access_token);
+        setAuth(prev =>({ ...prev, access_token: response.access_token})); 
         setLoginVisible(false);
       } else {
         setError("Failed to login. Please check your credentials.");
       }
     };
+
 
     const handleChange = e =>{
       setLoginData({
