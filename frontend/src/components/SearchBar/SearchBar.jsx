@@ -115,9 +115,12 @@ const SearchBar = () =>{
                             <img src={data?.avatar_url} alt="User Avatar"/>
                         </Link>
                         
-                        <button className="login-button" onClick={handleLogout}>
-                            Logout
-                        </button>
+                        <Link to={'/'}>
+                            <button className="login-button" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        </Link>
+                       
                     </div>
                 )}
             </div>
